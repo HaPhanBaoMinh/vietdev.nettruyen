@@ -31,6 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+TIME_ZONE = 'UTC'
 
 # Application definition
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user.apps.UserConfig',
+    'comic.apps.ComicConfig',
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist'
@@ -122,9 +124,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'nettruyen.wsgi.application'
-
-
-# Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 # DATABASES = {
@@ -134,10 +133,12 @@ WSGI_APPLICATION = 'nettruyen.wsgi.application'
 #     }
 # }
 
+# Postgres database (live)
+
+
 env = environ.Env()
 environ.Env.read_env()
 
-# Postgres database (live)
 DATABASES = {
     'default': dj_database_url.parse(env('DATABASE_URL'))
 }
@@ -160,7 +161,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# AUTH_USER_MODEL = 'user.MyUser'
+AUTH_USER_MODEL = 'user.MyUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -227,8 +228,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'minhhpbse160216@fpt.edu.vn'
-EMAIL_HOST_PASSWORD = "minh1292002"
+# EMAIL_HOST_USER = 'minhhpbse160216@fpt.edu.vn'
+# EMAIL_HOST_PASSWORD = "minh1292002"
 
-MEDIA_URL = '/user/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'user/media/')
+MEDIA_URL = '/nettruyen/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'nettruyen/media/')
