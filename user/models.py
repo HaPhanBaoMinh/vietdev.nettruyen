@@ -23,7 +23,7 @@ class Follow(models.Model):
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
     updated_at = models.DateTimeField(auto_now=True)
-    is_readed = models.BooleanField(default=False)
+    readed = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user} {self.comic}"
@@ -35,3 +35,4 @@ class BookMark(models.Model):
     comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
     chapter = models.ForeignKey(Chap, on_delete=models.CASCADE)
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    

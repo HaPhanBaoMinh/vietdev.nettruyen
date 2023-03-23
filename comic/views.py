@@ -56,16 +56,17 @@ def getComicBySortFiled(request, page_num, sort_field):
             'follower': comic.follower,
             'comment': comic.comment,
             'chap': comic.chap,
-            "latest_chaps": serialized_chap.data
-            # 'sumary': comic.sumary,
-            # 'status': comic.status,
-            # 'genres': serialized_genres,
-            # 'other_name': comic.other_name,
-            # 'author': comic.author,
+            "latest_chaps": serialized_chap.data,
+            'sumary': comic.sumary,
+            'status': comic.status,
+            'genres': serialized_genres,
+            'other_name': comic.other_name,
+            'author': comic.author,
         }
         serialized_comics.append(serialized_comic)
 
     return JsonResponse(serialized_comics, safe=False)
+
 # GET - api/comics/<comic_id>
 
 
@@ -103,12 +104,19 @@ def getComicByGenreSlug(request, genre_slug):
     return Response(serializer.data)
 
 
+# GET - api/comics/chap/image/<chap_num>
 @api_view(['GET'])
 def getChapImage(request, chap_id):
     serializer_class = ImageSerializer
     images = Image.objects.filter(chap_id=chap_id)
     serializer = serializer_class(images, many=True)
+
+    # Add to bookmark (history) if usser login
+    user = request.user
+
     return Response(serializer.data)
+
+# GET - api/comics/genres
 
 
 @api_view(['GET'])

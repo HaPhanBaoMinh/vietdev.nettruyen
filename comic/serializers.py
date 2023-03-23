@@ -36,8 +36,6 @@ class ComicSerializerBasicInfo(ModelSerializer):
             })
         return newest_chaps_data
 
-        return None
-
 
 class GenreSerializer(ModelSerializer):
     class Meta:
@@ -48,7 +46,7 @@ class GenreSerializer(ModelSerializer):
 class ChapSerializer(ModelSerializer):
     class Meta:
         model = Chap
-        fields = ['updated_at', 'chap_num', 'name']
+        fields = ['updated_at', 'chap_num', 'name', 'id']
 
 
 class ComicSerializerDetail(ModelSerializer):
