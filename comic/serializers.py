@@ -26,12 +26,16 @@ class ComicSerializerBasicInfo(ModelSerializer):
         fields = ["image", "name", "newest_chap", "genres"]
 
     def get_newest_chap(self, obj):
-        newest_chap = obj.chapter.order_by('-created_at').first()
-        if newest_chap:
-            return {
-                'name': newest_chap.name,
-                'created_at': newest_chap.created_at,
-            }
+        newest_chaps = obj.chapter.order_by('-created_at')[:3]
+        newest_chaps_data = []
+        for chap in newest_chaps:
+            newest_chaps_data.append({
+                'chap_num': chap.chap_num,
+                'name': chap.name,
+                "created_at": chap.created_at
+            })
+        return newest_chaps_data
+
         return None
 
 
