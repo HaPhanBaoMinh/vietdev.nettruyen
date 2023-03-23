@@ -56,17 +56,16 @@ def getComicBySortFiled(request, page_num, sort_field):
             'follower': comic.follower,
             'comment': comic.comment,
             'chap': comic.chap,
-            "latest_chaps": serialized_chap.data,
-            'sumary': comic.sumary,
-            'status': comic.status,
-            'genres': serialized_genres,
-            'other_name': comic.other_name,
-            'author': comic.author,
+            "latest_chaps": serialized_chap.data
+            # 'sumary': comic.sumary,
+            # 'status': comic.status,
+            # 'genres': serialized_genres,
+            # 'other_name': comic.other_name,
+            # 'author': comic.author,
         }
         serialized_comics.append(serialized_comic)
 
     return JsonResponse(serialized_comics, safe=False)
-
 # GET - api/comics/<comic_id>
 
 
