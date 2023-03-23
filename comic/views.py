@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator, EmptyPage
-from .models import Comic, Genre, Chap
-from .serializers import ComicSerializer, ChapSerializer
+from .models import Comic, Genre, Chap, Image
+from .serializers import ComicSerializer, ChapSerializer, ComicSerializerBasicInfo, ComicSerializerDetail, ImageSerializer
 from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import FieldError
 from django.utils import timezone
@@ -15,10 +15,12 @@ def index(request):
     return HttpResponse("comics")
 
 # GET - api/comics/<sort_field>/<page_num>
+
+
 def getComicBySortFiled(request, page_num, sort_field):
 
     try:
-    # Get newest chap 
+        # Get newest chap
         comicsSofted = Comic.objects.all().order_by(sort_field)
         paginator = Paginator(comicsSofted, 10)
         page_comic = paginator.page(page_num)
@@ -27,7 +29,6 @@ def getComicBySortFiled(request, page_num, sort_field):
         return JsonResponse({'error': 'Page not found'}, status=404)
     except EmptyPage:
         return JsonResponse({'error': 'Page not found'}, status=404)
-    
 
     serialized_comics = []
     for comic in page_comic:
@@ -40,7 +41,8 @@ def getComicBySortFiled(request, page_num, sort_field):
             }
             serialized_genres.append(serialized_genre)
 
-            latest_chaps = Chap.objects.filter(comic=comic).order_by('-updated_at')[:3]
+            latest_chaps = Chap.objects.filter(
+                comic=comic).order_by('-updated_at')[:3]
             serialized_chap = ChapSerializer(instance=latest_chaps, many=True)
 
         serialized_comic = {
@@ -51,7 +53,7 @@ def getComicBySortFiled(request, page_num, sort_field):
             'view': comic.view,
             'rating': comic.rating,
             'image': comic.image.url,
-            'follower': comic.follower, 
+            'follower': comic.follower,
             'comment': comic.comment,
             'chap': comic.chap,
             "latest_chaps": serialized_chap.data
@@ -66,11 +68,45 @@ def getComicBySortFiled(request, page_num, sort_field):
     return JsonResponse(serialized_comics, safe=False)
 
 # GET - api/comics/<comic_id>
+
+
 @api_view(['GET'])
 def getComicDetail(request, comic_id):
     comic = Comic.objects.get(pk=comic_id)
-    if not comic: return JsonResponse({'error': 'Not exist comic'}, status=400)
+    if not comic:
+        return JsonResponse({'error': 'Not exist comic'}, status=400)
 
-    serialized_comic = ComicSerializer(instance=comic)
+    serialized_comic = ComicSerializerDetail(instance=comic)
 
     return Response(serialized_comic.data, status=status.HTTP_200_OK)
+
+
+# GET - api/comics/<search>
+@api_view(['GET'])
+def getComicSearch(request):
+    serializer_class = ComicSerializerBasicInfo
+    query = request.GET.get('value', '')
+    print(query)
+    if not query:
+        return JsonResponse({"message": "No value provided"}, status=status.HTTP_400_BAD_REQUEST)
+    comics = Comic.objects.filter(Q(name__icontains=query) | Q(
+        author__icontains=query) | Q(sumary__icontains=query))
+
+    serializer = serializer_class(comics, many=True)
+    return Response(serializer.data)
+
+
+# GET - api/comics/<genre_slug>
+@api_view(['GET'])
+def getComicByGenreSlug(request, genre_slug):
+    comics = Comic.objects.filter(genres__slug=genre_slug)
+    serializer = ComicSerializer(comics, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getChapImage(request, chap_id):
+    serializer_class = ImageSerializer
+    images = Image.objects.filter(chap_id=chap_id)
+    serializer = serializer_class(images, many=True)
+    return Response(serializer.data)
