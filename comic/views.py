@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator, EmptyPage
 from .models import Comic, Genre, Chap, Image
-from .serializers import ComicSerializer, ChapSerializer, ComicSerializerBasicInfo, ComicSerializerDetail, ImageSerializer
+from .serializers import ComicSerializer, ChapSerializer, ComicSerializerBasicInfo, ComicSerializerDetail, ImageSerializer, GenreSerializer
 from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import FieldError
 from django.utils import timezone
@@ -66,7 +66,6 @@ def getComicBySortFiled(request, page_num, sort_field):
         serialized_comics.append(serialized_comic)
 
     return JsonResponse(serialized_comics, safe=False)
-
 # GET - api/comics/<comic_id>
 
 
@@ -109,4 +108,12 @@ def getChapImage(request, chap_id):
     serializer_class = ImageSerializer
     images = Image.objects.filter(chap_id=chap_id)
     serializer = serializer_class(images, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getGenres(request):
+    serializer_class = GenreSerializer
+    genres = Genre.objects.all()
+    serializer = serializer_class(genres, many=True)
     return Response(serializer.data)
