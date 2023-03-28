@@ -5,21 +5,23 @@ from user.models import MyUser, Follow
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 from comic.serializers import ComicSerializer, ComicSerializerBasicInfo, ChapSerializer
 
+
 class UserSerializer(ModelSerializer):
     class Meta:
         model = MyUser
         fields = ('id', 'username', 'email', 'avatar', 'fullname')
- 
+
 
 class FollowSerializer(ModelSerializer):
     comic = ComicSerializerBasicInfo()
+
     class Meta:
         model = Follow
-        fields = ('comic', )
+        fields = ('comic', 'readed')
         depth = 1
+
 
 class FollowSerializerFull(ModelSerializer):
     class Meta:
         model = Follow
         fields = '__all__'
- 
