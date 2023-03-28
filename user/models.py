@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from django.db import models
-from comic.models import Comic, Chap
+from comic.models import Comic
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
+from comic.models import Comic, Chap
 # Create your models here.
 
 
@@ -31,3 +32,24 @@ class Follow(models.Model):
     def __str__(self):
         return f"{self.user} {self.comic}"
  
+@receiver(post_save, sender=Follow)
+def update_follower_count(sender, instance, created, **kwargs):
+    if created:
+        comic = instance.comic
+        comic.follower += 1
+        comic.save()
+
+@receiver(post_delete, sender=Follow)
+def update_follower_count_on_delete(sender, instance, **kwargs):
+    comic = instance.comic
+    comic.follower -= 1
+    comic.save()
+
+
+class BookMark(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
+    chapter = models.ForeignKey(Chap, on_delete=models.CASCADE)
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    
