@@ -40,16 +40,6 @@ class ChapSerializer(ModelSerializer):
         model = Chap
         fields = ['updated_at', 'chap_num', 'name']
 
-class ChapImagesSerializer(ModelSerializer):
-    class Meta:
-        model = Chap
-        fields = ['updated_at', 'chap_num', 'name', 'images']
-
-# class ChapImageSerializer(ModelSerializer):
-#     class Meta:
-#         model = ChapImage
-#         fields = ['chap', 'images']
-
 
 class GetComicNameSerializer(ModelSerializer):
     class Meta:
@@ -62,24 +52,23 @@ class UserSerializer(ModelSerializer):
         fields = ['username']
 
 
-class CommentSerializer(ModelSerializer):
-    comic = GetComicNameSerializer()
-    user = UserSerializer()
-    class Meta:
-        model = Comment
-        fields = '__all__'
-        # depth = 1
-
-
 class CommentPostSerializer(ModelSerializer):
     class Meta:
         model = Comment
-        fields = ('comic', 'content', 'chap', 'user')
+        fields = ('comic', 'content', 'chap', 'user', 'parent')
+        # depth = 1
 
-    def set_comic_id(self, id):
-        return {
-            'comic': id,
-        }
+
+class CommentSerializer(ModelSerializer):
+    comic = GetComicNameSerializer()
+    user = UserSerializer()
+    # parent = CommentPostSerializer()
+
+    class Meta:
+        model = Comment
+        fields = '__all__'
+        extra_fields = ['number']
+        # depth = 1
 
 class CommentPutSerializer(ModelSerializer):
     class Meta:

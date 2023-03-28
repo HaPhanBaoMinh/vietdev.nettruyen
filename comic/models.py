@@ -1,3 +1,5 @@
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 # Create your models here.
 from django.apps import apps
@@ -52,16 +54,9 @@ class Chap(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     comic = models.ForeignKey(Comic, on_delete=models.CASCADE, related_name="chapter")
-    images = ArrayField(models.ImageField(upload_to='comic_img/'), null=True)
+    # images = ArrayField(models.ImageField(upload_to='comic_img/'), null=True)
     def __str__(self):
         return f"{self.chap_num} {self.name} {self.comic.name} {self.updated_at}"
-
-# class ChapImage(models.Model):
-#     chap = models.ForeignKey(Chap, editable=False, on_delete=models.CASCADE)
-#     images = models.ImageField(upload_to='comic_img/')
-#
-#     def __str__(self):
-#         return self.chap.name
 
 
 class Comment(models.Model):
@@ -73,9 +68,15 @@ class Comment(models.Model):
     update_at = models.DateTimeField(auto_now=True)
     removed = models.BooleanField(default=False)
     edited = models.BooleanField(default=False)
+    like_cmt = models.PositiveIntegerField(default=0)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='liked_posts')
+    parent = models.ForeignKey('self', null=True, on_delete=models.CASCADE, related_name='replies')
+
+    class Meta:
+        ordering = ('created_at',)
 
     def __str_(self):
-        return str(self.comic)
+        return f"{self.user} {self.content} {self.chap} {self.updated_at}"
 
 class Rating (models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, on_delete=models.CASCADE)

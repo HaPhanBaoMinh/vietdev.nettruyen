@@ -1,9 +1,11 @@
+from django.contrib.contenttypes.models import ContentType
 from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import get_object_or_404
+from django.views.decorators.http import require_POST
 
 from .models import Comic, Genre, Chap, Comment, Rating
 from .serializers import ComicSerializer, ChapSerializer, CommentSerializer, CommentPostSerializer
-from .serializers import CommentPutSerializer, RatingSerializer, ChapImagesSerializer
+from .serializers import CommentPutSerializer, RatingSerializer
 from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import FieldError
 from django.utils import timezone
@@ -20,7 +22,6 @@ def index(request):
 
 # GET - api/comics/<sort_field>/<page_num>
 def getComicBySortFiled(request, page_num, sort_field):
-
     try:
     # Get newest chap 
         comicsSofted = Comic.objects.all().order_by(sort_field)
@@ -87,31 +88,55 @@ class CommentAPI(generics.ListCreateAPIView):
     queryset = Comment.objects.all().order_by('-created_at')
     serializer_class = CommentPostSerializer
     def get(self, request, id, id_chap):
-        comments = Comment.objects.filter(comic=id, removed=False).order_by('-created_at')
+        comments = Comment.objects.filter(comic=id, removed=False, parent=None).order_by('-created_at')
+        replies = Comment.objects.filter(comic=id, removed=False).exclude(parent=None).order_by('-created_at')
+        # print(comments)
+        # replyDict = {}
+        # for comment in comments:
+        #     replyDict[comment.id] = [comment]
+        # for reply in replies:
+        #     if reply.parent.id not in replyDict.keys():
+        #         replyDict[reply.parent.id] = [reply]
+        #     else:
+        #         replyDict[reply.parent.id].append(reply)
+        # print(replyDict)
         serializer_comment = CommentSerializer(comments, many=True)
         return Response(serializer_comment.data, status=200)
 
     # POST API-CMT  /comics/comic_id/id_chap
     def post(self, request, id, id_chap):
-        comics = Comic.objects.get(id=id)
         content = request.data.get('content')
-        if request.user.is_authenticated:
-            user = request.user
-            data = Comment.objects.create(
-                user=user,
-                comic_id=id,
-                chap_id=id_chap,
-                content=content,
-            )
-            data.save()
-            serializer_comment = CommentPostSerializer(data=data)
-            if serializer_comment.is_valid():
-                serializer_comment.save()
-                comics.comment = comics.comment + 1
-                comics.save()
+        parent_id = request.data.get('parent_id')
+        print(content)
+        print(parent_id)
+        if parent_id == None:
+            if request.user.is_authenticated:
+                user = request.user
+                data = Comment.objects.create(
+                    user=user,
+                    comic_id=id,
+                    chap_id=id_chap,
+                    content=content,
+                )
+                data.save()
+                serializer_comment = CommentPostSerializer(data)
                 return Response(serializer_comment.data, status=status.HTTP_201_CREATED)
-            return Response(serializer_comment.errors, status=400)
-        return Response({'msg': 'user not authenticated'})
+        else:
+            parent = Comment.objects.get(id=parent_id)
+            if request.user.is_authenticated:
+                user = request.user
+                data = Comment.objects.create(
+                    user=user,
+                    comic_id=id,
+                    chap_id=id_chap,
+                    content=content,
+                    parent=parent,
+                )
+                data.save()
+                serializer_comment = CommentPostSerializer(data)
+                return Response(serializer_comment.data, status=status.HTTP_201_CREATED)
+            return Response({'msg': 'user not authenticated'})
+
 
 #1 fields content can update
 @api_view(['PUT', 'DELETE'])
@@ -148,6 +173,24 @@ def PutComment(request, comic_id, cmt_id):
             return Response({'msg': 'deleted'}, status=status.HTTP_204_NO_CONTENT)
         return Response({'msg': 'user not authenticated'})
 
+
+def like_post(request, cmt_id):
+    post = get_object_or_404(Comment, id=cmt_id)
+    user = request.user
+
+    if user.is_authenticated:
+        if user in post.likes.all():
+            post.likes.remove(user)
+            message = 'unliked'
+        else:
+            post.likes.add(user)
+            message = 'liked'
+        data = {'message': message, 'likes': post.likes.count()}
+        return JsonResponse(data)
+    else:
+        data = {'message': 'User not authenticated'}
+        return JsonResponse(data, status=401)
+
 class RateViewAPI(generics.ListCreateAPIView):
     queryset = Rating.objects.filter(removed=False).order_by('-created_at')
     serializer_class = RatingSerializer
@@ -177,19 +220,3 @@ class RateViewAPI(generics.ListCreateAPIView):
         comics.save()
         return Response(rates, status=200)
 
-# @api_view(['GET'])
-# def GetChapComics(request):
-#     ok =
-# import os
-# from django.conf import settings
-# def story_images(request, comic_id):
-#     story_path = os.path.join(settings.MEDIA_ROOT, f'comic_img/comic_{comic_id}/')
-#     images = os.listdir(story_path)
-#     return JsonResponse({'images': images})
-
-@api_view(['GET'])
-def comic_view(request, id):
-    chap = get_object_or_404(Chap, id=id)
-    photos = ChapImage.objects.filter(chap=chap)
-    serializer_image = ChapImageSerializer(photos)
-    return Response(serializer_image.data)

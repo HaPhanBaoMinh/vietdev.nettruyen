@@ -14,6 +14,6 @@ urlpatterns = [
     path('follow', views.comicFollow),
     path('logout', views.logout),
     path('/', views.index),
-
+    path('upload/', views.ImageViewSet, name='upload'),
 
 ]

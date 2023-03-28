@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "a34631ee-031f-433e-ad39-ea65f6f873c4",
+		"name": "avt_put",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26093390"
+	},
+	"item": [
+		{
+			"name": "put_avt",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgxMjkxOTIyLCJpYXQiOjE2Nzk5OTU5MjIsImp0aSI6ImJhNjE0N2ZkMjg4NTRlZTdhMmQ2MTkzOWU3YzY0NDU1IiwidXNlcl9pZCI6MzcsInVzZXJuYW1lIjoibmhhbjEiLCJpZCI6Mzd9.eLmG4NjREhmFAEHeR8DhUoyvF5lVeRwPdQxLe69CgoM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/Users/vietdev/Downloads/000001.jpeg"
+						},
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "nhan1",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/users/upload/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"users",
+						"upload",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

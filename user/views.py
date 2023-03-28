@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
+from rest_framework.views import APIView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status, generics, permissions
 from user.models import MyUser, Follow
 from django.contrib.auth.models import User
-from .serializers import UserSerializer, FollowSerializer, FollowSerializerFull
+from .serializers import UserSerializer, FollowSerializer, FollowSerializerFull, UserchangeAvatarSerializer
 from .utils import get_tokens_for_user
 from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
@@ -188,3 +190,30 @@ def comicFollow(request):
 
 def index(request):
     return HttpResponse("user")
+
+
+# @api_view(['PUT'])
+
+class UploadImageTest:
+    pass
+
+
+# class ImageViewSet(generics.ListCreateAPIView):
+#     queryset = MyUser.objects.all()
+#     serializer_class = UserchangeAvatarSerializer
+#     def Put(self, request, *args, **kwargs):
+#         user = request.user
+#         serializer = UserchangeAvatarSerializer(id=user.id, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response({'msg':"done"})
+#         return Response(serializer.errors, status=400)
+
+@api_view(['PUT'])
+def ImageViewSet(request):
+    user = request.user
+    serializer = UserchangeAvatarSerializer(user, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'msg': "done"})
+    return Response(serializer.errors, status=400)

@@ -234,3 +234,8 @@ EMAIL_PORT = 587
 
 MEDIA_URL = '/nettruyen/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'nettruyen/media/')
+import datetime
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=15),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=15),
+}
