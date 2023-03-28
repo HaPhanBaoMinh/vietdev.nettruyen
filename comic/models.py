@@ -68,7 +68,7 @@ class Comment(models.Model):
     update_at = models.DateTimeField(auto_now=True)
     removed = models.BooleanField(default=False)
     edited = models.BooleanField(default=False)
-    like_cmt = models.PositiveIntegerField(default=0)
+    # like_cmt = models.PositiveIntegerField(default=0)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='liked_posts')
     parent = models.ForeignKey('self', null=True, on_delete=models.CASCADE, related_name='replies')
 

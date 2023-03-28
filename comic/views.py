@@ -174,18 +174,18 @@ def PutComment(request, comic_id, cmt_id):
         return Response({'msg': 'user not authenticated'})
 
 
-def like_post(request, cmt_id):
-    post = get_object_or_404(Comment, id=cmt_id)
+def like_cmt(request, cmt_id):
+    cmt = get_object_or_404(Comment, id=cmt_id)
     user = request.user
-
+    print(user)
     if user.is_authenticated:
-        if user in post.likes.all():
-            post.likes.remove(user)
+        if user in cmt.likes.all():
+            cmt.likes.remove(user)
             message = 'unliked'
         else:
-            post.likes.add(user)
+            cmt.likes.add(user)
             message = 'liked'
-        data = {'message': message, 'likes': post.likes.count()}
+        data = {'message': message, 'likes': cmt.likes.count()}
         return JsonResponse(data)
     else:
         data = {'message': 'User not authenticated'}

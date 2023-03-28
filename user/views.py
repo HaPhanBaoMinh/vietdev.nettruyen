@@ -197,23 +197,13 @@ def index(request):
 class UploadImageTest:
     pass
 
-
-# class ImageViewSet(generics.ListCreateAPIView):
-#     queryset = MyUser.objects.all()
-#     serializer_class = UserchangeAvatarSerializer
-#     def Put(self, request, *args, **kwargs):
-#         user = request.user
-#         serializer = UserchangeAvatarSerializer(id=user.id, data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response({'msg':"done"})
-#         return Response(serializer.errors, status=400)
-
 @api_view(['PUT'])
 def ImageViewSet(request):
     user = request.user
+    print(user)
     serializer = UserchangeAvatarSerializer(user, data=request.data)
     if serializer.is_valid():
         serializer.save()
-        return Response({'msg': "done"})
+        serializer_user = UserSerializer(user)
+        return Response(serializer_user.data, status=200)
     return Response(serializer.errors, status=400)

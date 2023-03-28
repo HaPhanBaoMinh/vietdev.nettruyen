@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a34631ee-031f-433e-ad39-ea65f6f873c4",
+		"_postman_id": "cceeec85-562c-47b3-b7b5-bf2e4515e2a1",
 		"name": "avt_put",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26093390"
@@ -27,7 +27,7 @@
 						{
 							"key": "avatar",
 							"type": "file",
-							"src": "/Users/vietdev/Downloads/000001.jpeg"
+							"src": "/Users/vietdev/Downloads/anh-3d-thien-nhien.jpeg"
 						},
 						{
 							"key": "id",
