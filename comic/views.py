@@ -174,22 +174,24 @@ def PutComment(request, comic_id, cmt_id):
         return Response({'msg': 'user not authenticated'})
 
 
+@api_view(['GET'])
 def like_cmt(request, cmt_id):
-    cmt = get_object_or_404(Comment, id=cmt_id)
-    user = request.user
-    print(user)
-    if user.is_authenticated:
-        if user in cmt.likes.all():
-            cmt.likes.remove(user)
-            message = 'unliked'
+    if request.method == 'GET':
+        cmt = get_object_or_404(Comment, id=cmt_id)
+        user = request.user
+        print(user)
+        if user.is_authenticated:
+            if user in cmt.likes.all():
+                cmt.likes.remove(user)
+                message = 'unliked'
+            else:
+                cmt.likes.add(user)
+                message = 'liked'
+            data = {'message': message, 'likes': cmt.likes.count()}
+            return JsonResponse(data)
         else:
-            cmt.likes.add(user)
-            message = 'liked'
-        data = {'message': message, 'likes': cmt.likes.count()}
-        return JsonResponse(data)
-    else:
-        data = {'message': 'User not authenticated'}
-        return JsonResponse(data, status=401)
+            data = {'message': 'User not authenticated'}
+            return JsonResponse(data, status=401)
 
 class RateViewAPI(generics.ListCreateAPIView):
     queryset = Rating.objects.filter(removed=False).order_by('-created_at')

@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "cceeec85-562c-47b3-b7b5-bf2e4515e2a1",
+		"name": "like_cmt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26093390"
+	},
+	"item": [
+		{
+			"name": "like_cmt",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgxMjk2MjAyLCJpYXQiOjE2ODAwMDAyMDIsImp0aSI6IjQ2N2I4YmU1OWMzZjRkMDliZjVkNzkwNTJkYWE1NjJmIiwidXNlcl9pZCI6MzcsInVzZXJuYW1lIjoibmhhbjEiLCJpZCI6Mzd9.fc2mgcdRibtMEXCTgYNoE6_Rs2O2h0HLXEjMiSGcA7k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/Users/vietdev/Downloads/anh-3d-thien-nhien.jpeg"
+						},
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "nhan1",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/comics/cmt_like/90",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"comics",
+						"cmt_like",
+						"90"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
