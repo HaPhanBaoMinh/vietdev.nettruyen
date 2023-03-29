@@ -48,11 +48,11 @@ def getComicBySortFiled(request, page_num, sort_field):
         paginator = Paginator(comicsSofted, 36)
 
         # If sort by view count by day, week, month just return 7 comic
-        if sort_field == '-view_day' or sort_field == '-view_week' or sort_field == '-view_month':
+        if sort_field == '-view_day' or sort_field == '-view_week' or sort_field == '-view_month' and not genreSlug and not status:
             paginator = Paginator(comicsSofted, 7)
 
         # If sort by view count just return 20 comic
-        if sort_field == '-view':
+        if sort_field == '-view' and not genreSlug and not status:
             paginator = Paginator(comicsSofted, 20)
 
         page_comic = paginator.page(page_num)
