@@ -1,7 +1,7 @@
 from datetime import timedelta
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
-from user.models import MyUser, Follow
+from user.models import MyUser, Follow, BookMark
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 from comic.serializers import ComicSerializer, ComicSerializerBasicInfo, ChapSerializer
 
@@ -22,6 +22,11 @@ class FollowSerializer(ModelSerializer):
 
 
 class FollowSerializerFull(ModelSerializer):
+    class Meta:
+        model = Follow
+        fields = '__all__'
+
+class BookMarkSerializer(ModelSerializer):
     class Meta:
         model = Follow
         fields = '__all__'

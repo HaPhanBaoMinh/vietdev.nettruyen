@@ -1,0 +1,366 @@
+[
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Tất cả",
+            "slug": "tat-ca"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Action",
+            "slug": "action"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Adult",
+            "slug": "adult"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Adventure",
+            "slug": "adventure"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Anime",
+            "slug": "anime"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Chuyển Sinh",
+            "slug": "chuyen-sinh"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Comedy",
+            "slug": "comedy"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Comic",
+            "slug": "comic"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Cooking",
+            "slug": "cooking"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Cổ Đại",
+            "slug": "co-dai"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Doujinshi",
+            "slug": "doujinshi"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Drama",
+            "slug": "drama"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Đam Mỹ",
+            "slug": "dam-my"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Ecchi",
+            "slug": "ecchi"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Fantasy",
+            "slug": "fantasy"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Gender Bender",
+            "slug": "gender-bender"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Harem",
+            "slug": "harem"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Historical",
+            "slug": "historical"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Horror",
+            "slug": "horror"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Josei",
+            "slug": "josei"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Live action",
+            "slug": "live-action"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Manga",
+            "slug": "manga"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Manhua",
+            "slug": "manhua"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Manhwa",
+            "slug": "manhwa"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Martial Arts",
+            "slug": "martial-arts"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Mature",
+            "slug": "mature"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Mecha",
+            "slug": "mecha"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Mystery",
+            "slug": "mystery"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Ngôn Tình",
+            "slug": "ngon-tinh"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "One shot",
+            "slug": "one-shot"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Psychological",
+            "slug": "psychological"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Romance",
+            "slug": "romance"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "School Life",
+            "slug": "school-life"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Sci-fi",
+            "slug": "sci-fi"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Seinen",
+            "slug": "seinen"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Shoujo",
+            "slug": "shoujo"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Shoujo Ai",
+            "slug": "shoujo-ai"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Shounen",
+            "slug": "shounen"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Shounen Ai",
+            "slug": "shounen-ai"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Slice of Life",
+            "slug": "slice-of-life"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Smut",
+            "slug": "smut"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Soft Yaoi",
+            "slug": "soft-yaoi"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Soft Yuri",
+            "slug": "soft-yuri"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Sports",
+            "slug": "sports"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Supernatural",
+            "slug": "supernatural"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Thiếu Nhi",
+            "slug": "thieu-nhi"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Tragedy",
+            "slug": "tragedy"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Trinh Thám",
+            "slug": "trinh-tham"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Truyện scan",
+            "slug": "truyen-scan"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Truyện Màu",
+            "slug": "truyen-mau"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Webtoon",
+            "slug": "webtoon"
+        }
+    },
+    {
+        "model": "comic.genre",
+        "fields": {
+            "name": "Xuyên Không",
+            "slug": "xuyen-khong"
+        }
+    }
+]

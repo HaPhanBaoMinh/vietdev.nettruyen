@@ -9,6 +9,8 @@ from rest_framework.decorators import api_view
 from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.response import Response
+from user.serializers import BookMarkSerializer
+from user.models import MyUser, BookMark
 
 
 def index(request):
@@ -22,7 +24,7 @@ def getComicBySortFiled(request, page_num, sort_field):
     try:
         # Get newest chap
         comicsSofted = Comic.objects.all().order_by(sort_field)
-        paginator = Paginator(comicsSofted, 10)
+        paginator = Paginator(comicsSofted, 36)
         page_comic = paginator.page(page_num)
 
     except FieldError:
@@ -41,9 +43,13 @@ def getComicBySortFiled(request, page_num, sort_field):
             }
             serialized_genres.append(serialized_genre)
 
-            latest_chaps = Chap.objects.filter(
-                comic=comic).order_by('-updated_at')[:3]
-            serialized_chap = ChapSerializer(instance=latest_chaps, many=True)
+        latest_chaps = Chap.objects.filter(
+            comic=comic).order_by('-updated_at')[:3]
+
+        serialized_chaps = []
+        if latest_chaps:
+            serializer = ChapSerializer(instance=latest_chaps, many=True)
+            serialized_chaps = serializer.data
 
         serialized_comic = {
             'id': comic.id,
@@ -56,10 +62,10 @@ def getComicBySortFiled(request, page_num, sort_field):
             'follower': comic.follower,
             'comment': comic.comment,
             'chap': comic.chap,
-            "latest_chaps": serialized_chap.data
+            'genres': serialized_genres,
+            "latest_chaps": serialized_chaps
             # 'sumary': comic.sumary,
             # 'status': comic.status,
-            # 'genres': serialized_genres,
             # 'other_name': comic.other_name,
             # 'author': comic.author,
         }
@@ -110,9 +116,6 @@ def getChapImage(request, chap_id):
     images = Image.objects.filter(chap_id=chap_id)
     serializer = serializer_class(images, many=True)
 
-    # Add to bookmark (history) if usser login
-    user = request.user
-
     return Response(serializer.data)
 
 # GET - api/comics/genres
@@ -124,3 +127,17 @@ def getGenres(request):
     genres = Genre.objects.all()
     serializer = serializer_class(genres, many=True)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+def addBookmark(request):
+    data = {
+        "user": request.user.id,
+        "comic": request.data.get("comic"),
+        "chap": request.data.get("chap")
+    }
+    serializer = BookMarkSerializer(data=data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

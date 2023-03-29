@@ -1,0 +1,470 @@
+[
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Đế Chế Diệt Vong",
+      "other_name": "",
+      "author": "Yoruhashi",
+      "status": "updating",
+      "summary": "Con người từ xưa đã sống dưới sự bảo hộ của phù thủy, họ tôn kính, biết ơn và đồng thời cũng cảm thấy ... KHIẾP SỢ trước năng lực của các phù thủy. Con người muốn nổi dậy, muốn chứng minh rằng thế giới hiện nay là do họ làm chủ ... Họ truy lùng, tận diệt các phù thủy còn sót lại cho đến kẻ cuối cùng. Nhưng nhân loại không ngờ rằng, ở đâu đó có một thiếu niên là con người nhưng lại được cứu giúp và cưu mang bởi phù thủy, chứng kiến cảnh người mình yêu thương bị chính chủng tộc mình sát hại tàn nhẫn, liệu cậu thiếu niên kia sẽ làm gì để trả thù?",
+      "image": "comic/de-che-diet-vong.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Tổng Tài Bá Đạo Xin Được Ôm",
+      "other_name": "",
+      "author": "Chưởng Duyệt",
+      "status": "updating",
+      "summary": "Một đêm triền miên, vứt lại 200 tệ, tự cho là bản thân đen đủi! Tưởng rằng từ giờ chỉ là người qua đường, nhưng hết lần này đến lần khác bị tóm trở lại giường..........sau đó phẫn nộ, đổi lại, anh ta nói sẽ chịu trách nhiệm với cô, cô rất muốn biết chịu trách nhiệm như thế nào !? Anh ta như sói như hổ xông lên, tiếp tục ngủ......!",
+      "image": "comic/tong-tai-ba-dao-xin-duoc-om.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Kết Thúc Nhất Định Sẽ Có Hậu",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Truyện tranh Kết Thúc Nhất Định Sẽ Có Hậu được cập nhật nhanh và đầy đủ nhất tại NetTruyen. Bạn đọc đừng quên để lại bình luận và chia sẻ, ủng hộ NetTruyen ra các chương mới nhất của truyện Kết Thúc Nhất Định Sẽ Có Hậu.",
+      "image": "comic/ket-thuc-nhat-dinh-se-co-hau.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Onepunch Man",
+      "other_name": "",
+      "author": "Murata Yuusuke",
+      "status": "updating",
+      "summary": "Onepunch-Man là một Manga thể loại siêu anh hùng với đặc trưng phồng tôm đấm phát chết luôn… Lol!!! Nhân vật chính trong Onepunch-man là Saitama, một con người mà nhìn đâu cũng thấy “tầm thường”, từ khuôn mặt vô hồn, cái đầu trọc lóc, cho tới thể hình long tong. Tuy nhiên, con người nhìn thì tầm thường này lại chuyên giải quyết những vấn đề hết sức bất thường. Anh thực chất chính là một siêu anh hùng luôn tìm kiếm cho mình một đối thủ mạnh. Vấn đề là, cứ mỗi lần bắt gặp một đối thủ tiềm năng, thì đối thủ nào cũng như đối thủ nào, chỉ ăn một đấm của anh là… chết luôn. Liệu rằng Onepunch-Man Saitaman có thể tìm được cho mình một kẻ ác dữ dằn đủ sức đấu với anh? Hãy theo bước Saitama trên con đường một đấm tìm đối cực kỳ hài hước của anh!!",
+      "image": "comic/onepunch-man.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Cướp Lấy Nàng Dâu Mừng Năm Mới",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Truyện tranh Cướp Lấy Nàng Dâu Mừng Năm Mới được cập nhật nhanh và đầy đủ nhất tại NetTruyen. Bạn đọc đừng quên để lại bình luận và chia sẻ, ủng hộ NetTruyen ra các chương mới nhất của truyện Cướp Lấy Nàng Dâu Mừng Năm Mới.",
+      "image": "comic/cuop-lay-nang-dau-mung-nam-moi.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Đúng Như Hàn Quang Gặp Nắng Gắt",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Smart nữ hài nghịch tập công lược băng sơn tổng tài. Vườn trường? Chức trường? Xé muội? Tôi đều làm được!",
+      "image": "comic/dung-nhu-han-quang-gap-nang-gat.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Tôi Trở Lại Thăng Cấp Một Mình",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Tất cả có 120 triệu người biến mất khắp thế giới. [Bạn phải thực hiện nhiệm vụ cuối cùng thành công, và sẽ được nhận phần thưởng là: ‘Được trở về’.] Trong 22 năm, Yoon Sang Huyk, cuối cùng đã có thể đánh bại trò chơi sống còn tàn bạo nhất. Người đàn ông đã trở thành ‘một người đàn ông chiếu đấu đơn độc’, và là người mạnh nhất trong tất cả người chơi khác, anh ấy cuối cùng được trở lại thế giới thực. Và không chỉ thế anh còn được trở về với một phần thưởng mà chưa có ai nhận được. [Quốc vương đeo mặt nạ trở về] Đây là sự khởi đầu của bộ Trở về mà còn được thăng cấp cao nhất!",
+      "image": "comic/toi-tro-lai-thang-cap-mot-minh.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Tôi Sống Trên Hoang Đảo Cùng Các Em Gái",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Truyện tranh Tôi Sống Trên Hoang Đảo Cùng Các Em Gái được cập nhật nhanh và đầy đủ nhất tại NetTruyen. Bạn đọc đừng quên để lại bình luận và chia sẻ, ủng hộ NetTruyen ra các chương mới nhất của truyện Tôi Sống Trên Hoang Đảo Cùng Các Em Gái.",
+      "image": "comic/toi-song-tren-hoang-dao-cung-cac-em-gai.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Tiền Đạo Số 1",
+      "other_name": "",
+      "author": "Kaneshiro Muneyuki",
+      "status": "updating",
+      "summary": "Yoichi Isagi đã bỏ lỡ cơ hội tham dự giải Cao Trung toàn quốc do đã chuyền cho đồng đội thay vì tự thân mình dứt điểm. Cậu là một trong 300 chân sút U-18 được tuyển chọn bởi Jinpachi Ego, người đàn ông được Hiệp Hội Bóng Đá Nhật Bản thuê sau hồi FIFA World Cup năm 2018, nhằm dẫn dắt Nhật Bản vô địch World Cup bằng cách tiêu diệt nền bóng đá Nhật Bản. Kế hoạch của Ego gồm việc cô lập 300 tay sút trong một nhà ngục - dưới một tổ chức với tên gọi là \"Blue Lock\", với mục tiêu là tạo ra chân sút \"tự phụ\" nhất thế giới, điều mà nền bóng đá Nhật Bản còn thiếu.",
+      "image": "comic/tien-dao-so-1.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Cha Ơi Con Không Muốn Kết Hôn Đâu",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Tôi tái sinh thành nhân vật trong cuốn tiểu thuyết từng đọc, Jubel Lian Eloy Floyen, nhân vật phản diện sẽ có kết thúc bi thảm. Nhưng giờ thì khác rồi, với những ký ức kiếp trước, tôi sẽ tránh được cái chết thảm khốc dành cho mình thôi!",
+      "image": "comic/cha-oi-con-khong-muon-ket-hon-dau.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Yêu Ngươi Ta Có Bệnh",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "\"Anh có bị bệnh hay không vậy?\" Cố gắng theo đuổi một người lấn át kẻ, lãnh khốc, vô cùng kiêu ngạo, xong anh ta lập tức biến tôi thành đầy tớ. Nếu nói tới cảm giác giữa yêu và ghét, chắc hẳn nó là kinh tởm rồi.",
+      "image": "comic/yeu-nguoi-ta-co-benh.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Trong Nhà Có 2 Bạn Gái Song Sinh",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Truyện tranh Trong Nhà Có 2 Bạn Gái Song Sinh được cập nhật nhanh và đầy đủ nhất tại NetTruyen. Bạn đọc đừng quên để lại bình luận và chia sẻ, ủng hộ NetTruyen ra các chương mới nhất của truyện Trong Nhà Có 2 Bạn Gái Song Sinh.",
+      "image": "comic/trong-nha-co-2-ban-gai-song-sinh.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Cuộc Sống Hằng Ngày Của Nhóm Nữ Siêu Hùng Trung Học",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Khi team siêu anh hùng \"Justice league\" như \"Sịp\", \"Đấng\" hay \"Barry\" có họ xa bên Nhật - là mấy bé trung học đang tập tành làm siêu anh hùng bằng siêu năng lực của mình.  Cùng với đó là một dàn phản diện đậm chất \"Nhật Bổn\".",
+      "image": "comic/cuoc-song-hang-ngay-cua-nhom-nu-sieu-hung-trung-hoc.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Hanako-Kun Nhà Xí",
+      "other_name": "",
+      "author": "Aidairo",
+      "status": "updating",
+      "summary": "Tại học viện Kamone, nơi nổi tiếng với “Bảy điều kỳ bí trường học”, một trong số đó là về Hanako-san. Người “thống trị” buồng thứ ba của nhà vệ sinh nữ trên tầng ba trong tòa nhà cũ của trường học, Hanako-san ban tặng tất cả điều ước cho bất kì người nào khi được triệu hồi. Yashiro Nene, một học sinh trung học khép kín nhưng thường xuyên mơ mộng về những câu chuyện tình yêu lãng mạn, đã mạo hiểm khám phá khu nhà vệ sinh bị ám này… nhưng Hanako-san mà cô gặp không hề giống như những gì cô đã tưởng tượng! Kanako-san của học viện Kamone…Là một đứa con trai ư?",
+      "image": "comic/hanako-kun-nha-xi.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Vẻ Đẹp Qua Những Lá Bài",
+      "other_name": "",
+      "author": "Suetsugu Yuki",
+      "status": "updating",
+      "summary": "Ban đầu, ước mơ của Chihay Ayase đó là chị mình sẽ trở thành người mẫu số 1 Nhật Bản. Nhưng cuộc gặp gỡ với cậu học trò nghèo Arata Wataya đã dạy cho cô bé biết một điều rằng \"Ước mơ chỉ thực sự là ước mơ khi ta nỗ lực phấn đấu để đạt được nó\". Niềm vui thích lớn nhất của Arata đó là đựoc chơi bài Kurata*. Chính tình yêu cũng như sự nghiêm túc của Arata dành cho bài Kurata đã truyền cảm hứng cho Chihaya, đồng thời đem đến cho em một ước mơ mới: trở thành nữ hoàng bài Kurata!\nChihayafuru đã giành được 2 giải thưởng Manga Taisho. Chiến thắng trong giải Kodansha Manga hàng năm với vị trí 35 thể loại Shoujo hay nhất. Đồng thời nó cũng được chuyển thể thành anime với độ dài 25 tập.",
+      "image": "comic/ve-dep-qua-nhung-la-bai.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Đại Tiểu Thư Có Thể Có Cái Gì Xấu",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Lên kế hoạch nhiều năm, thiên kim bá khí Đồng Duyệt quyết tâm bắt những kẻ đã làm tổn thương mình phải trả giá, nhưng khi xé xác kẻ thù của mình cô liền bị Hàn Thiên Lân ngăn cản, kéo tình nhân vào bí mật của mình nên đối mặt ra sao, Đồng Duyệt tỏ ý, đối phó với anh ta, chỉ cần búng tay một phát là được.",
+      "image": "comic/dai-tieu-thu-co-the-co-cai-gi-xau.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Đệ Nhất Ở Rể",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Cha mẹ mất tích tần lập đạt được lão nhân thần bí bí truyền công pháp, 10 năm nhẫn nhục tu luyện, khi thành công nhân sinh đỉnh phong",
+      "image": "comic/de-nhat-o-re.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Lần Nữa Toả Sáng",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Tôi đã bị buộc tội vì cố giết em gái mình, người được tôn sùng như một vị thánh.\nKhông ai tin tôi, không ai ủng hộ tôi. Kể cả những gia đình ruột thịt. Mùa đông năm tôi 14 tuổi. Tôi, công chúa thứ 4 của Denver, đã bị chặt đầu một cách khủng khiếp trước mặt mọi người.\nĐiều gì đến với tôi sau khi cuộc đời tôi kết thúc và đôi mắt mới của tôi lại 1 lần nữa mở ra ...\n“Em gái yêu! em gái yêu quý của anh.”\nAnh cười ngọt ngào và nắm lấy ngón tay út của tôi. Những cử chỉ thân thiện, ấm áp và cảm động. Anh nhẹ nhàng ôm tôi, lay tôi và hát ru.\n“Cả thế giới này đều yêu em\"\nĐế chế El Mir, đối thủ của Đế chế Idenber, tôi được tái sinh thành em gái của Thái tử và là công chúa quý giá của đế chế này.\nChuyện này là sao? Liệu lần này tôi có thể có tình yêu thương hay lại 1 lần nữa bị bỏ rơi và chết.",
+      "image": "comic/lan-nua-toa-sang.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Người Đẹp Hóa Ra Là Quái Vật? Chàng Trai Thành Thị Và Cô Gái Phố Thị",
+      "other_name": "",
+      "author": "Chidori Komatsubara",
+      "status": "updating",
+      "summary": "Cuộc sống của Marie không có gì ngoài công việc. Từ sau cuộc tình cuối cùng, Marie FA lâu đến nỗi đã mất dần cảm giác yêu thương. Niềm vui duy nhất của cô là thư giãn ở một thẩm mỹ viện, nơi có Shinobu, một nhân viên nữ quyến rũ với kỹ thuật điêu luyện. Một hôm, trên đường đi đến tham dự cuộc họp, Marie gặp Shinomiya, là con trai của chủ tịch một tập đoàn lớn. Nhưng tại sao, anh ta lại giống hệt Shinobu. Ngạc nhiên hơn khi Maria mất thăng bằng và sắp ngã, Shinomiya đã đỡ cô và chạm vào điểm yếu của cô mà chỉ có Shinobu mới biết.",
+      "image": "comic/nguoi-dep-hoa-ra-la-quai-vat-chang-trai-thanh-thi-va-co-gai-pho-thi.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Con Gái Bá Tước Bỗng Thành Vị Hôn Thê Của Thái Tử Điện Hạ",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Cô là con gái của bá tước từng nổi rần rần, thời gian dần trôi, sự nổi tiếng cộng độ giàu có cũng bị giảm đi. Nó rớt tới nỗi đến một người hầu nhà bá tước còn chẳng có. Với cái chức danh làm màu mà không có tiền cũng chẳng làm gì được, cha của cô đã cho cô đến thủ đô hoàng gia, để tập tục các “lễ nghi” mà ở đây có nghĩa là giặt giũ và dọn dẹp?! Một sáng đẹp trời, cô gặp phải hoàng tử điện hạ – người mà không phụ nữ nào được lại gần! Bởi vậy mà có người đồn rằng anh ta bị gay… Nhưng lời đồn chỉ là lời đồn, thực hư sẽ ra sao? Đọc đi rồi biết, viết cái nội dung mỏi tay voãi",
+      "image": "comic/con-gai-ba-tuoc-bong-thanh-vi-hon-the-cua-thai-tu-dien-ha.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Hãy Ám Sát Ta Để Cứu Lấy Trái Đất",
+      "other_name": "",
+      "author": "Matsui Yuusei",
+      "status": "updating",
+      "summary": "“Ta là người đã phá huỷ mặt trăng” “Hãy ám sát ta nếu các ngươi muốn cứu lấy trái đất” Một con bạch tuộc chẳng biết tự lỗ nào chui lên cứ luôn miệng gào thét hai câu này và đòi làm thầy giáo của đám học sinh cá biệt lớp 3-E. Chẳng hiểu hắn đang nghĩ cái quái gì khi bản thân không muốn chết nhưng cứ thích khuyến khích người ta ám sát mình. Để coi cái lớp học sát thủ này rồi sẽ đi về đâu...",
+      "image": "comic/hay-am-sat-ta-de-cuu-lay-trai-dat.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Đừng Để Tôi Bảo Vệ",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Truyện tranh Đừng Để Tôi Bảo Vệ được cập nhật nhanh và đầy đủ nhất tại NetTruyen. Bạn đọc đừng quên để lại bình luận và chia sẻ, ủng hộ NetTruyen ra các chương mới nhất của truyện Đừng Để Tôi Bảo Vệ.",
+      "image": "comic/dung-de-toi-bao-ve.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Kuro No Souzou Shoukanshi - Tenseisha No Hangyaku",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Câu chuyện kể về một thanh niên có được một quyển ma pháp hắc ám, cân cmn cả thế giới!",
+      "image": "comic/kuro-no-souzou-shoukanshi-tenseisha-no-hangyaku.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Tự Do Trong Mơ",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Choi Jung Min bị bạn bè bắt nạt, cô lập ở trường học vì mối quan hệ tồi tệ với Ha Joo Hyun khi còn nhỏ. Hai cô gái đã từng là bạn bè thân thiết lúc còn học cấp 1, nhưng vì cái tính khí kỳ lạ của Joo Hyun mà sau đó hai người đã tuyệt giao với nhau.\nKhi lên cấp 3, Jung Min gặp lại Joo Hyun, và cũng là lúc chuỗi bi kịch bắt đầu. Joo Hyun chính là người đã khởi xướng để bạn bè trong lớp tẩy chay Jung Min.\nNiềm an ủi duy nhất của Jung Min, giúp cô ấy có thể giải tỏa những ức chế, ám ảnh trong suốt thời gian dài của mình, là lợi dụng “Giấc mơ sáng suốt”. Trong mơ cô ấy hoán đổi vị trí của mình với Joo Hyun, cho Joo Hyun nếm trải thử những cảm giác mà cô ấy đã phải chịu.\nSau đó vào một ngày nọ, khi đi vào giấc mơ sáng suốt, cô ấy gặp một người đàn ông bí ẩn. Và anh ta đề nghị Jung Min hãy trả thù tất cả những ai từng bắt nạt cô ấy…",
+      "image": "comic/tu-do-trong-mo.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Ma Thú Siêu Thần",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Truyện tranh Ma Thú Siêu Thần được cập nhật nhanh và đầy đủ nhất tại NetTruyen. Bạn đọc đừng quên để lại bình luận và chia sẻ, ủng hộ NetTruyen ra các chương mới nhất của truyện Ma Thú Siêu Thần.",
+      "image": "comic/ma-thu-sieu-than.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Tối Cường Thăng Cấp Hệ Thống",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Xuyên việt tới thế giới trò chơi! \nNhân vật chính Long Phi mang theo một hệ thống cuồng bạo thức tỉnh bên trongthế giới trò chơi, giết quái lên cấp, giết người cũng thăng cấp, nghịch tập báo thù, nghiền ép tam giới, đã bạo hết thảy người không phục!",
+      "image": "comic/toi-cuong-thang-cap-he-thong.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Cô Bạn Gái Kì Lạ Của Tôi",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Cậu học sinh Ngô Tú Bân với khả năng nhìn thấy ma nên bị toàn bộ bạn bè và người xung quanh xa lánh. Bỗng 1 ngày Chu Gia Tô - hot girl của trường hóa ra lại là bạn gái thuở bé của cậu. Mọi chuyện sẽ ra sao đây...?",
+      "image": "comic/co-ban-gai-ki-la-cua-toi.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Couple Breaker",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Truyện tranh Couple Breaker được cập nhật nhanh và đầy đủ nhất tại NetTruyen. Bạn đọc đừng quên để lại bình luận và chia sẻ, ủng hộ NetTruyen ra các chương mới nhất của truyện Couple Breaker.",
+      "image": "comic/couple-breaker.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Thợ Săn Quỷ",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Tác giả của \"Fire Punch\" lần đầu tiên xuất hiện trên Shonen Jump với câu chuyện về một Dark Hero!\nCậu thiếu niên Denji sống một cuộc sống nghèo khổ và phải làm việc vất vả để trả nợ. Cậu vừa sống vừa làm Thợ Săn Qủy cùng với Pochita - loài quỷ Chainsaw, nhưng rồi một ngày cậu trở thành mục tiêu của mọt con quỷ tàn bạo...",
+      "image": "comic/tho-san-quy.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Nhặt Được Hoa Khôi Về Làm Vợ",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Truyện tranh Nhặt Được Hoa Khôi Về Làm Vợ được cập nhật nhanh và đầy đủ nhất tại NetTruyen. Bạn đọc đừng quên để lại bình luận và chia sẻ, ủng hộ NetTruyen ra các chương mới nhất của truyện Nhặt Được Hoa Khôi Về Làm Vợ.",
+      "image": "comic/nhat-duoc-hoa-khoi-ve-lam-vo.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Dokyuu Hentai Hxeros",
+      "other_name": "",
+      "author": "Kitada Ryouma",
+      "status": "updating",
+      "summary": "Truyện tranh Dokyuu Hentai Hxeros được cập nhật nhanh và đầy đủ nhất tại NetTruyen. Bạn đọc đừng quên để lại bình luận và chia sẻ, ủng hộ NetTruyen ra các chương mới nhất của truyện Dokyuu Hentai Hxeros.",
+      "image": "comic/dokyuu-hentai-hxeros.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Huyền Thoại Giáo Sĩ Trở Lại",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Truyện tranh Huyền Thoại Giáo Sĩ Trở Lại được cập nhật nhanh và đầy đủ nhất tại NetTruyen. Bạn đọc đừng quên để lại bình luận và chia sẻ, ủng hộ NetTruyen ra các chương mới nhất của truyện Huyền Thoại Giáo Sĩ Trở Lại.",
+      "image": "comic/huyen-thoai-giao-si-tro-lai.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Học Giả Trở Lại",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Cử nhân Ma Hyun, sau khi mất tích trong 10 năm, anh đã trở lại xã hội với tư cách là một chủ nhân quyền lực! Trong khi là một giáo viên, anh ấy cũng đang cố gắng thanh trừng tổ chức xấu xa tên là Heukcheonbyeol. Và như vậy, cuộc sống của anh ấy với tư cách là người thầy mạnh nhất của Joongwon đã mở ra ngay bây giờ!",
+      "image": "comic/hoc-gia-tro-lai.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Đỉnh Cấp Khí Vận, Lặng Lẽ Tu Luyện Ngàn Năm",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Chuyển thế đi vào tu tiên thế giới, Hàn Tuyệt phát hiện chính mình mang theo trò chơi thuộc tính, vậy mà có thể đổ xúc xắc đổi mới linh căn tư chất cùng Tiên Thiên khí vận.Kết quả là, hắn bỏ ra mười một năm lắc Tiên Thiên khí vận.« tuyệt thế vô song: Tiên tư, mị lực đỉnh cấp »« Thiên Mệnh Kiếm Si: Kiếm Đạo tư chất đỉnh cấp, Kiếm Đạo ngộ tính đỉnh cấp »« thân pháp tuyệt trần: Thân pháp tư chất đỉnh cấp »« Tiên Đế hậu duệ: Thu hoạch được một bộ tuyệt thế công pháp tu tiên, 1000 khối linh thạch thượng phẩm »Hàn Tuyệt vì trường sinh, quyết định lặng lẽ tu luyện, không ra đầu ngọn gió.Ngàn năm sau, tu chân giới một đời đổi một đời.Khi Tiên giới thanh lý thế gian lúc, Hàn Tuyệt không thể không ra tay.Hắn lúc này mới phát hiện, giống như Tiên Thần bất quá cũng như vậy!",
+      "image": "comic/dinh-cap-khi-van-lang-le-tu-luyen-ngan-nam.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Đông Phương Chân Long",
+      "other_name": "",
+      "author": "Hoàng Ngọc Lang",
+      "status": "updating",
+      "summary": "Đông Phương Chân Long là một mở đầu mới của Cựu Tác Long Hổ Môn, khi Chân Long đạt cảnh giới chung cực Thập Dương, ác chiến với Long Hổ Môn đã làm mở cánh cổng thời gian, Long Hổ Môn theo đó trở về quá khứ mà bắt đầu Tân Tác. (Hoàng Ngọc Lang giai đoạn này vừa ra tù, thấy câu chuyện Long Hổ Môn đã đi quá xa nội dung mình muốn, đầy yếu tố ma ảo huyền hoặc, nên muốn làm lại mới từ đầu mới cho kết thúc đột ngột) Trong phần này, câu chuyện sẽ theo một hướng khác, hi vọng sẽ có nhiết bất ngờ và đặc sắc. Ghi chú: Truyện sẽ có một số nội dung của Cựu Tác hơi khác với Tân Tác.",
+      "image": "comic/dong-phuong-chan-long.jpg"
+    }
+  },
+  {
+    "model": "comic.Comic",
+    "fields": {
+      "created_at": "2023-03-29 03:59:25",
+      "updated_at": "2023-03-29 03:59:25",
+      "name": "Từ Lúc Bắt Đầu Liền Vô Địch",
+      "other_name": "",
+      "author": null,
+      "status": "updating",
+      "summary": "Ting, túc chủ đã mở ra vô địch lĩnh vực!Chỉ cần ở trong lĩnh vực, túc chủ chính là vô địch thiên hạ!” Thân là một tử trạch, Trần Trường An xuyên qua thế giới huyền huyễn, đối mặt ngoại giới vô số yêu ma quỷ quái, Trần Trường An quyết không rời khỏi vô địch lĩnh vực của chính mình trước khi thành tiên.Rảnh rỗi tới nhàm chán, ngẫu nhiên bồi dưỡng mấy cái đồ nhi ngoan, không cẩn thận đều bồi dưỡng thành đại lão giới tu hành, quấy đến thế giới long trời lở đất.",
+      "image": "comic/tu-luc-bat-dau-lien-vo-dich.jpg"
+    }
+  }
+]

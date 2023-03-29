@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Genre, Comic, Chap, Image
 # Register your models here.
 admin.site.register(Genre)
-# admin.site.register(Chap)
+# admin.site.register(Image)
 #  return f"{self.name} {self.view} {self.chap} {self.rating} {self.status}"
 
 
@@ -22,7 +22,7 @@ admin.site.register(Chap, ChapAdmin)
 
 
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ("order", "image", "chap", "comic")
+    list_display = ("order", "image", "chap", )
 
 
 admin.site.register(Image, ImageAdmin)
