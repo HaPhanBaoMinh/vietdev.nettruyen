@@ -13,7 +13,7 @@ urlpatterns = [
     path('register', views.create_user),
     path('follow', views.comicFollow),
     path('logout', views.logout),
+    path('bookmark', views.bookmark),
     path('/', views.index),
-
 
 ]

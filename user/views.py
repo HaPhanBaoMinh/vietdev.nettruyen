@@ -6,9 +6,9 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status, generics, permissions
-from user.models import MyUser, Follow
+from user.models import MyUser, Follow, BookMark
 from django.contrib.auth.models import User
-from .serializers import UserSerializer, FollowSerializer, FollowSerializerFull
+from .serializers import UserSerializer, FollowSerializer, FollowSerializerFull, BookMarkSerializer, BookMarkDetailSerializer
 from .utils import get_tokens_for_user
 from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
@@ -16,7 +16,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 from comic.models import Comic
 from django.shortcuts import get_object_or_404
-
 # Create your views here.
 
 
@@ -207,6 +206,50 @@ def comicFollow(request):
             follow.save()
             serializer = FollowSerializer(instance=follow)
             return JsonResponse({"message": "Success!"}, status=status.HTTP_200_OK)
+
+
+@api_view(['GET', 'POST', "DELETE"])
+@permission_classes([IsAuthenticated])
+def bookmark(request):
+    if request.method == 'POST':
+        data = {
+            "user": request.user.id,
+            "comic": request.data.get("comic"),
+            "chap": request.data.get("chap")
+        }
+
+        existBookmark = BookMark.objects.filter(
+            user=data.get("user"), comic=data.get("comic")).first()
+
+        serializer = BookMarkSerializer(data=data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        # If already exists bookmark of comic just change chaap_id
+        if existBookmark:
+            existBookmark.chap_id = data.get("chap")
+            existBookmark.disabled = False
+            existBookmark.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        # Create new bookmark
+        bookmark_data = serializer.validated_data
+        BookMark.objects.create(
+            user=bookmark_data['user'],
+            comic=bookmark_data['comic'],
+            chap=bookmark_data['chap']
+        )
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    if request.method == "DELETE":
+        pass
+
+    if request.method == "GET":
+        user = request.user
+        queryset = BookMark.objects.filter(user=user, disabled=False)
+
+        serializer = BookMarkDetailSerializer(instance=queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 def index(request):

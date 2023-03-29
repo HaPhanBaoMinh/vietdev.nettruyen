@@ -49,7 +49,7 @@ class Comic(models.Model):
     genres = models.ManyToManyField(Genre)
 
     def __str__(self):
-        return f"{self.id} {self.name} {self.view} {self.chap} {self.rating} {self.updated_at} {self.created_at} {self.status}"
+        return f"{self.name}"
 
 
 class Chap(models.Model):
@@ -61,7 +61,7 @@ class Chap(models.Model):
         Comic, on_delete=models.CASCADE, related_name="chapter")
 
     def __str__(self):
-        return f"{self.chap_num} {self.name} {self.comic.name} {self.updated_at}"
+        return f"{self.name} - {self.comic}"
 
 
 @receiver(post_save, sender=Chap)

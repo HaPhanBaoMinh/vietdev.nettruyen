@@ -26,7 +26,24 @@ class FollowSerializerFull(ModelSerializer):
         model = Follow
         fields = '__all__'
 
+
 class BookMarkSerializer(ModelSerializer):
     class Meta:
-        model = Follow
+        model = BookMark
         fields = '__all__'
+
+
+class BookMarkDetailSerializer(ModelSerializer):
+    comic = serializers.SerializerMethodField()
+    chap_bookmark = serializers.SerializerMethodField()
+
+    def get_chap_bookmark(self, obj):
+        return ChapSerializer(obj.chap).data
+
+    def get_comic(self, obj):
+        return ComicSerializerBasicInfo(obj.comic).data
+
+    class Meta:
+        model = BookMark
+        fields = ('comic', 'chap_bookmark')
+        depth = 1

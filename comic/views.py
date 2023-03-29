@@ -11,6 +11,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from user.serializers import BookMarkSerializer
 from user.models import MyUser, BookMark
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
+from rest_framework.permissions import IsAuthenticated
 
 
 def index(request):
@@ -25,6 +27,8 @@ def getComicBySortFiled(request, page_num, sort_field):
         # Get newest chap
         comicsSofted = Comic.objects.all().order_by(sort_field)
         paginator = Paginator(comicsSofted, 36)
+        if sort_field == '-view_day' or sort_field == '-view_week' or sort_field == '-view_month':
+            paginator = Paginator(comicsSofted, 7)
         page_comic = paginator.page(page_num)
 
     except FieldError:
@@ -63,7 +67,8 @@ def getComicBySortFiled(request, page_num, sort_field):
             'comment': comic.comment,
             'chap': comic.chap,
             'genres': serialized_genres,
-            "latest_chaps": serialized_chaps
+            "latest_chaps": serialized_chaps,
+            "view": comic.view,
             # 'sumary': comic.sumary,
             # 'status': comic.status,
             # 'other_name': comic.other_name,
@@ -110,13 +115,30 @@ def getComicByGenreSlug(request, genre_slug):
 
 
 # GET - api/comics/chap/image/<chap_num>
+# Increate the number of view, view_day, view_week, view_month
 @api_view(['GET'])
 def getChapImage(request, chap_id):
     serializer_class = ImageSerializer
     images = Image.objects.filter(chap_id=chap_id)
     serializer = serializer_class(images, many=True)
 
-    return Response(serializer.data)
+    response = Response(serializer.data)
+
+    increateView = request.COOKIES.get(str(chap_id))
+
+    if not increateView:
+        chap = Chap.objects.get(pk=chap_id)
+        comic = chap.comic
+        comic.view += 1
+        comic.view_day += 1
+        comic.view_week += 1
+        comic.view_month += 1
+        comic.save()
+        response.set_cookie(str(chap_id), str(chap_id), max_age=60 * 5)
+
+    print(increateView)
+
+    return response
 
 # GET - api/comics/genres
 
@@ -127,17 +149,3 @@ def getGenres(request):
     genres = Genre.objects.all()
     serializer = serializer_class(genres, many=True)
     return Response(serializer.data)
-
-
-@api_view(['POST'])
-def addBookmark(request):
-    data = {
-        "user": request.user.id,
-        "comic": request.data.get("comic"),
-        "chap": request.data.get("chap")
-    }
-    serializer = BookMarkSerializer(data=data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

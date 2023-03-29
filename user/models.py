@@ -18,7 +18,7 @@ class MyUser(AbstractUser):
     fullname = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.username} {self.is_active}"
+        return f"{self.username}"
 
 
 class Follow(models.Model):
@@ -31,25 +31,15 @@ class Follow(models.Model):
 
     def __str__(self):
         return f"{self.user} {self.comic}"
- 
-@receiver(post_save, sender=Follow)
-def update_follower_count(sender, instance, created, **kwargs):
-    if created:
-        comic = instance.comic
-        comic.follower += 1
-        comic.save()
-
-@receiver(post_delete, sender=Follow)
-def update_follower_count_on_delete(sender, instance, **kwargs):
-    comic = instance.comic
-    comic.follower -= 1
-    comic.save()
 
 
 class BookMark(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
-    chapter = models.ForeignKey(Chap, on_delete=models.CASCADE)
+    chap = models.ForeignKey(Chap, on_delete=models.CASCADE)
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
-    
+    disabled = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user.fullname} {self.comic} {self.chap}"
