@@ -26,9 +26,35 @@ def getComicBySortFiled(request, page_num, sort_field):
     try:
         # Get newest chap
         comicsSofted = Comic.objects.all().order_by(sort_field)
+
+        # Sort by gender
+        if sort_field == '-gender':
+            comicsSofted = comicsSofted.filter(gender='female')
+
+        if sort_field == 'gender':
+            comicsSofted = comicsSofted.filter(gender='male')
+
+        # If query parameters status is valid
+        status = request.GET.get('status', '')
+        if status:
+            comicsSofted = comicsSofted.filter(status=status)
+
+        # If query parameters genre is valid
+        genreSlug = request.GET.get('genre', '')
+        genre = Genre.objects.get(slug=str(genreSlug))
+        if genre:
+            comicsSofted = comicsSofted.filter(genres=genre)
+
         paginator = Paginator(comicsSofted, 36)
+
+        # If sort by view count by day, week, month just return 7 comic
         if sort_field == '-view_day' or sort_field == '-view_week' or sort_field == '-view_month':
             paginator = Paginator(comicsSofted, 7)
+
+        # If sort by view count just return 20 comic
+        if sort_field == '-view':
+            paginator = Paginator(comicsSofted, 20)
+
         page_comic = paginator.page(page_num)
 
     except FieldError:
@@ -100,7 +126,7 @@ def getComicSearch(request):
     if not query:
         return JsonResponse({"message": "No value provided"}, status=status.HTTP_400_BAD_REQUEST)
     comics = Comic.objects.filter(Q(name__icontains=query) | Q(
-        author__icontains=query) | Q(sumary__icontains=query))
+        author__icontains=query) | Q(summary__icontains=query))
 
     serializer = serializer_class(comics, many=True)
     return Response(serializer.data)

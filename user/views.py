@@ -211,6 +211,7 @@ def comicFollow(request):
 @api_view(['GET', 'POST', "DELETE"])
 @permission_classes([IsAuthenticated])
 def bookmark(request):
+    # create a new bookmark
     if request.method == 'POST':
         data = {
             "user": request.user.id,
@@ -241,9 +242,23 @@ def bookmark(request):
         )
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+    # Disable bookmarks
     if request.method == "DELETE":
-        pass
+        data = {
+            "user": request.user.id,
+            "comic": request.data.get("comic"),
+        }
 
+        existBookmark = BookMark.objects.filter(
+            user=data.get("user"), comic=data.get("comic")).first()
+
+        if existBookmark:
+            existBookmark.disabled = True
+            existBookmark.save()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    # Get comic bookmarks
     if request.method == "GET":
         user = request.user
         queryset = BookMark.objects.filter(user=user, disabled=False)

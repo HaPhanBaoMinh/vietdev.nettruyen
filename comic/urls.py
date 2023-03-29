@@ -5,7 +5,6 @@ from django.http import HttpResponse
 urlpatterns = [
     path('/search', views.getComicSearch),
     path('/genres', views.getGenres),
-    # path('/bookmark', views.bookmark),
     path('/chap/image/<int:chap_id>', views.getChapImage),
     path('/<str:genre_slug>', views.getComicByGenreSlug),
     path('/detail/<int:comic_id>', views.getComicDetail),
