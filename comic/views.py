@@ -41,8 +41,8 @@ def getComicBySortFiled(request, page_num, sort_field):
 
         # If query parameters genre is valid
         genreSlug = request.GET.get('genre', '')
-        genre = Genre.objects.get(slug=str(genreSlug))
-        if genre:
+        if genreSlug:
+            genre = Genre.objects.get(slug=str(genreSlug))
             comicsSofted = comicsSofted.filter(genres=genre)
 
         paginator = Paginator(comicsSofted, 36)
