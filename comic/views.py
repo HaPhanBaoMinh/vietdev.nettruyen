@@ -219,7 +219,7 @@ class RateViewAPI(generics.ListCreateAPIView):
                 serializer_rating.save()
                 return Response(serializer_rating.data, status=200)
             # return Response(serializer_rating.data, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'msg': 'user not authenticated'})
+            return Response({'msg': 'user not authenticated'})
 
 #get average stars and save it in comics database
     def get(self, request, comic_id):
@@ -227,7 +227,6 @@ class RateViewAPI(generics.ListCreateAPIView):
             comics = Comic.objects.get(id=comic_id)
             rates = Rating.objects.filter(comic=comic_id, removed=False).aggregate(Avg('stars'))['stars__avg']
             comics.rating = rates
-            # print(comics.rating)
             comics.save()
             return Response(rates, status=200)
         return Response({'msg': 'user not authenticated'})
@@ -254,3 +253,4 @@ def history_view(request):
         history = History.objects.filter(user=user, removed_history=False)
         serializer_history = ComicHistorySerializer(history, many=True)
         return Response(serializer_history.data, status=200)
+

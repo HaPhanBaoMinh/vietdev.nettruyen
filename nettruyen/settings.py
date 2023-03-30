@@ -239,3 +239,12 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=15),
     'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=15),
 }
+
+
+DATETIME_FORMAT = '%d-%m-%Y %H:%M:%S'
+USE_L10N = False
+# # USE_I18N = True
+#
+# USE_L10N = False
+#
+USE_TZ = False
