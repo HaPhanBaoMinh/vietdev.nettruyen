@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('status', models.CharField(choices=[('updating', 'updating'), ('deleted', 'deleted'), ('ended', 'ended')], default='updating', max_length=20)),
                 ('views', models.IntegerField(default=0)),
-                ('sumary', models.CharField(max_length=255)),
+                ('summary', models.CharField(max_length=255)),
                 ('image', models.ImageField(default=None, upload_to='comic/')),
                 ('gender', models.CharField(choices=[('male', 'male'), ('demale', 'female'), ('unisex', 'unisex')], default='unisex', max_length=20)),
                 ('rating', models.IntegerField(default=0)),

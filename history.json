@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "f6c1296b-1dfe-41ec-aec8-4d1a2e6ac2c2",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26093390"
+	},
+	"item": [
+		{
+			"name": "get_history",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgxMjk2MjAyLCJpYXQiOjE2ODAwMDAyMDIsImp0aSI6IjQ2N2I4YmU1OWMzZjRkMDliZjVkNzkwNTJkYWE1NjJmIiwidXNlcl9pZCI6MzcsInVzZXJuYW1lIjoibmhhbjEiLCJpZCI6Mzd9.fc2mgcdRibtMEXCTgYNoE6_Rs2O2h0HLXEjMiSGcA7k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/comics/history/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"comics",
+						"history",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_history_comic_chap",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgxMjk2MjAyLCJpYXQiOjE2ODAwMDAyMDIsImp0aSI6IjQ2N2I4YmU1OWMzZjRkMDliZjVkNzkwNTJkYWE1NjJmIiwidXNlcl9pZCI6MzcsInVzZXJuYW1lIjoibmhhbjEiLCJpZCI6Mzd9.fc2mgcdRibtMEXCTgYNoE6_Rs2O2h0HLXEjMiSGcA7k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/comics/history/2/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"comics",
+						"history",
+						"2",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

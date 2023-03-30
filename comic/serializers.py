@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from comic.models import Comic, Genre, Chap, Comment, Rating
+from comic.models import Comic, Genre, Chap, Comment, Rating, History
 from rest_framework import serializers
 from django.contrib.auth.models import User
 # from user.serializers import UserSerializer
@@ -80,3 +80,14 @@ class RatingSerializer(ModelSerializer):
     class Meta:
         model = Rating
         fields = ('id', 'user', 'comic', 'stars')
+
+class GetChapnum(ModelSerializer):
+    class Meta:
+        model = Chap
+        fields = ['chap_num']
+class ComicHistorySerializer(ModelSerializer):
+    comic = GetComicNameSerializer()
+    chap = GetChapnum()
+    class Meta:
+        model = History
+        fields = ('id', 'comic', 'chap')

@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Genre, Comic, Chap, Comment, Rating
+from .models import Genre, Comic, Chap, Comment, Rating, History
 # Register your models here.
 admin.site.register(Genre)
+# admin.site.register(History)
 # admin.site.register(Chap)
 #  return f"{self.name} {self.view} {self.chap} {self.rating} {self.status}"
 class ComicAdmin(admin.ModelAdmin):
@@ -21,17 +22,6 @@ class Comment(admin.ModelAdmin):
 class Comment(admin.ModelAdmin):
     list_display = ('comic', 'user', 'stars')
 
-
-# class ChapImageAdmin(admin.StackedInline):
-#     model = ChapImage
-#
-# @admin.register(Chap)
-# class ChapAdmin(admin.ModelAdmin):
-#     inlines = [ChapImageAdmin]
-#
-#     class Meta:
-#         model = Chap
-#
-# @admin.register(ChapImage)
-# class ChapImageAdmin(admin.ModelAdmin):
-#     pass
+@admin.register(History)
+class History(admin.ModelAdmin):
+    list_display = ('comic', 'user', 'chap', 'removed_history')

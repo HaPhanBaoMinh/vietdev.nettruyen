@@ -3,9 +3,9 @@ from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
 
-from .models import Comic, Genre, Chap, Comment, Rating
+from .models import Comic, Genre, Chap, Comment, Rating, History
 from .serializers import ComicSerializer, ChapSerializer, CommentSerializer, CommentPostSerializer
-from .serializers import CommentPutSerializer, RatingSerializer
+from .serializers import CommentPutSerializer, RatingSerializer, ComicHistorySerializer
 from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import FieldError
 from django.utils import timezone
@@ -88,18 +88,21 @@ class CommentAPI(generics.ListCreateAPIView):
     queryset = Comment.objects.all().order_by('-created_at')
     serializer_class = CommentPostSerializer
     def get(self, request, id, id_chap):
-        comments = Comment.objects.filter(comic=id, removed=False, parent=None).order_by('-created_at')
+        comments = Comment.objects.filter(comic=id, removed=False).order_by('-created_at')
         replies = Comment.objects.filter(comic=id, removed=False).exclude(parent=None).order_by('-created_at')
-        # print(comments)
-        # replyDict = {}
-        # for comment in comments:
-        #     replyDict[comment.id] = [comment]
-        # for reply in replies:
-        #     if reply.parent.id not in replyDict.keys():
-        #         replyDict[reply.parent.id] = [reply]
-        #     else:
-        #         replyDict[reply.parent.id].append(reply)
-        # print(replyDict)
+        print(comments)
+        replyDict = {}
+        for comment in comments:
+            print(comment.parent)
+            if comment.parent == None:
+                replyDict[comment.id] = [comment]
+        for reply in replies:
+            if reply.parent.id not in replyDict.keys():
+                replyDict[reply.parent.id] = [reply]
+            else:
+                replyDict[reply.parent.id].append(reply)
+
+        print(replyDict)
         serializer_comment = CommentSerializer(comments, many=True)
         return Response(serializer_comment.data, status=200)
 
@@ -121,6 +124,7 @@ class CommentAPI(generics.ListCreateAPIView):
                 data.save()
                 serializer_comment = CommentPostSerializer(data)
                 return Response(serializer_comment.data, status=status.HTTP_201_CREATED)
+            return Response({'msg': 'user not authenticated'})
         else:
             parent = Comment.objects.get(id=parent_id)
             if request.user.is_authenticated:
@@ -146,7 +150,7 @@ def PutComment(request, comic_id, cmt_id):
             cmt = Comment.objects.get(comic=comic_id, id=cmt_id)
             if (cmt.removed == True):
                 return Response({'msg': 'this comment was deleted'}, status=400)
-        except cmt.DoesNotExist:
+        except Comment.DoesNotExist:
             return Response({'msg': 'this comment not found'}, status=400)
         if request.user.is_authenticated:
             cmt.edited = True
@@ -162,7 +166,7 @@ def PutComment(request, comic_id, cmt_id):
             cmt = Comment.objects.get(comic=comic_id, id=cmt_id)
             if(cmt.removed == True):
                 return Response({'msg': 'this comment was deleted'}, status=400)
-        except cmt.DoesNotExist:
+        except Comment.DoesNotExist:
             return Response({'msg': 'this comment not found'}, status=400)
         if request.user.is_authenticated:
             cmt.removed = True
@@ -171,6 +175,10 @@ def PutComment(request, comic_id, cmt_id):
                 serializer_comment.save()
             cmt.save()
             return Response({'msg': 'deleted'}, status=status.HTTP_204_NO_CONTENT)
+
+
+        # cmt = Comment.objects.get(comic=comic_id, id=cmt_id)
+        # cmt.delete()
         return Response({'msg': 'user not authenticated'})
 
 
@@ -215,10 +223,34 @@ class RateViewAPI(generics.ListCreateAPIView):
 
 #get average stars and save it in comics database
     def get(self, request, comic_id):
-        comics = Comic.objects.get(id=comic_id)
-        rates = Rating.objects.filter(comic=comic_id, removed=False).aggregate(Avg('stars'))['stars__avg']
-        comics.rating = rates
-        print(comics.rating)
-        comics.save()
-        return Response(rates, status=200)
+        if request.user.is_authenticated:
+            comics = Comic.objects.get(id=comic_id)
+            rates = Rating.objects.filter(comic=comic_id, removed=False).aggregate(Avg('stars'))['stars__avg']
+            comics.rating = rates
+            # print(comics.rating)
+            comics.save()
+            return Response(rates, status=200)
+        return Response({'msg': 'user not authenticated'})
 
+
+#HISTORY API
+@api_view(['POST'])
+def history(request, comic_id, chap_id):
+    if request.method == 'POST':
+        user = request.user
+        if user.is_authenticated:
+            try:
+                history, created = History.objects.update_or_create(comic_id=comic_id, user=user, defaults={'chap_id': chap_id},)
+                history.save()
+                return Response({'msg': 'history add'})
+            except:
+                return Response({'msg': 'invalid'})
+        return Response({'msg': 'user not authenticated'})
+
+@api_view(['GET'])
+def history_view(request):
+    if request.method == 'GET':
+        user = request.user
+        history = History.objects.filter(user=user, removed_history=False)
+        serializer_history = ComicHistorySerializer(history, many=True)
+        return Response(serializer_history.data, status=200)

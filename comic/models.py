@@ -10,10 +10,10 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Genre(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
-    
+
     def __str__(self):
         return self.name
-    
+
 class Comic(models.Model):
     STATUS_CHOICES = (
         ("updating", "updating"),
@@ -29,14 +29,14 @@ class Comic(models.Model):
     name = models.CharField(max_length=255, null=False)
     other_name = models.CharField(max_length=255, blank=True)
     author = models.CharField(max_length=255, null=False, default=None)
-    sumary = models.CharField(max_length=255, null=False)
+    summary = models.CharField(max_length=255, null=False)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
     updated_at = models.DateTimeField(auto_now=True, null=False)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, null=True)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True, default='unisex')
     image = models.ImageField(upload_to='comic/', null=True)
     rating = models.FloatField(default=0, null=False)
-    follower = models.IntegerField(default=0, null=False) 
+    follower = models.IntegerField(default=0, null=False)
     comment = models.IntegerField(default=0, null=False)
     chap = models.IntegerField(default=0, null=False)
     view = models.IntegerField(default=0, null=False)
@@ -47,7 +47,7 @@ class Comic(models.Model):
 
     def __str__(self):
         return f"{self.id} {self.name} {self.view} {self.chap} {self.rating} {self.updated_at} {self.created_at} {self.status}"
-    
+
 class Chap(models.Model):
     chap_num = models.IntegerField(blank=False)
     name = models.CharField(max_length=255, unique=True)
@@ -68,7 +68,6 @@ class Comment(models.Model):
     update_at = models.DateTimeField(auto_now=True)
     removed = models.BooleanField(default=False)
     edited = models.BooleanField(default=False)
-    # like_cmt = models.PositiveIntegerField(default=0)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='liked_posts')
     parent = models.ForeignKey('self', null=True, on_delete=models.CASCADE, related_name='replies')
 
@@ -92,3 +91,12 @@ class Rating (models.Model):
 
     def __str__(self):
         return f'{self.user} - {self.comic}'
+class History(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, on_delete=models.CASCADE)
+    comic = models.ForeignKey(Comic, related_name='comic_history_id', editable=False, on_delete=models.CASCADE)
+    chap = models.ForeignKey(Chap, editable=False, on_delete=models.CASCADE, null=True)
+    removed_history = models.BooleanField(default=0, null=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('update_at',)
