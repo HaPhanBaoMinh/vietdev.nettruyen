@@ -4,7 +4,7 @@ from django.db import models
 from comic.models import Comic
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-
+from django.core.validators import MinValueValidator, MaxValueValidator
 from comic.models import Comic, Chap
 # Create your models here.
 
@@ -41,5 +41,18 @@ class BookMark(models.Model):
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     disabled = models.BooleanField(default=False)
 
-    def __str__(self):
-        return f"{self.user.fullname} {self.comic} {self.chap}"
+
+class Rating(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    comic = models.ForeignKey(
+        Comic, on_delete=models.CASCADE, related_name="comic")
+    rating = models.IntegerField(null=False, validators=[
+        MinValueValidator(0),
+        MaxValueValidator(5)
+    ])
+
+
+def __str__(self):
+    return f"{self.user.fullname} {self.comic} {self.chap}"

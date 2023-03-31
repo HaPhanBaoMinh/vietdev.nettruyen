@@ -267,5 +267,11 @@ def bookmark(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+@api_view(['GET', 'POST', "DELETE"])
+@permission_classes([IsAuthenticated])
+def ratingComic(request):
+    pass
+
+
 def index(request):
     return HttpResponse("user")

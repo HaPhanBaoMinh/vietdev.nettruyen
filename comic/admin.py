@@ -15,7 +15,7 @@ admin.site.register(Comic, ComicAdmin)
 
 
 class ChapAdmin(admin.ModelAdmin):
-    list_display = ("id", "chap_num", "name", 'comic')
+    list_display = ("id", 'comic_id', "chap_num", "name", 'comic')
 
 
 admin.site.register(Chap, ChapAdmin)

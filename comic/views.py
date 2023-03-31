@@ -145,26 +145,30 @@ def getComicByGenreSlug(request, genre_slug):
 @api_view(['GET'])
 def getChapImage(request, chap_id):
     serializer_class = ImageSerializer
-    images = Image.objects.filter(chap_id=chap_id)
+    images = Image.objects.filter(chap_id=chap_id).order_by("order")
     serializer = serializer_class(images, many=True)
 
     response = Response(serializer.data)
 
     increateView = request.COOKIES.get(str(chap_id))
 
-    if not increateView:
+    try:
         chap = Chap.objects.get(pk=chap_id)
-        comic = chap.comic
-        comic.view += 1
-        comic.view_day += 1
-        comic.view_week += 1
-        comic.view_month += 1
-        comic.save()
-        response.set_cookie(str(chap_id), str(chap_id), max_age=60 * 5)
 
-    print(increateView)
+        if not increateView:
+            comic = chap.comic
+            comic.view += 1
+            comic.view_day += 1
+            comic.view_week += 1
+            comic.view_month += 1
+            comic.save()
+            response.set_cookie(str(chap_id), str(chap_id), max_age=60 * 5)
 
-    return response
+        print(increateView)
+
+        return response
+    except Chap.DoesNotExist:
+        return Response({'error': 'Chap not found'}, status=status.HTTP_404_NOT_FOUND)
 
 # GET - api/comics/genres
 
