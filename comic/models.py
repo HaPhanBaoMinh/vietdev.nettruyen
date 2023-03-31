@@ -6,6 +6,7 @@ from django.db import models
 from django.apps import apps
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
+from django.conf import settings
 
 from nettruyen import settings
 
@@ -32,7 +33,8 @@ class Comic(models.Model):
 
     name = models.CharField(max_length=255, null=False)
     other_name = models.CharField(max_length=255, blank=True)
-    author = models.CharField(max_length=255, null=True, default=None)
+    author = models.CharField(
+        max_length=255, null=True, default=None, blank=True)
     summary = models.CharField(max_length=1000, null=True, default=None)
     created_at = models.DateTimeField(
         auto_now_add=True, blank=True, null=True)
@@ -64,7 +66,7 @@ class Chap(models.Model):
         Comic, on_delete=models.CASCADE, related_name="chapter")
 
     def __str__(self):
-        return f"{self.name} - {self.comic}"
+        return f"{self.id} - {self.name} - {self.comic}"
 
 
 @receiver(post_save, sender=Chap)
@@ -73,6 +75,18 @@ def update_chapter_count(sender, instance, created, **kwargs):
         comic = instance.comic
         comic.chap += 1
         comic.save()
+
+        # Create folder to store image
+        folder_name = "comic_{0}_chapnum_{1}".format(
+            comic.id, instance.chap_num)
+        path = "{}/chap/{}".format(settings.MEDIA_ROOT, folder_name)
+        if os.path.exists(path):
+            return
+
+        try:
+            os.mkdir(path)
+        except OSError as error:
+            print(error)
 
         # Create folder to store image
         folder_name = "comic_{0}_chapnum_{1}".format(
@@ -102,6 +116,13 @@ def update_chapter_count_on_delete(sender, instance, **kwargs):
         os.rmdir(path)
     except OSError as error:
         print(error)
+
+
+def get_image_upload_path(instance, filename):
+    comic_id = instance.chap.comic.id
+    chap_num = instance.chap.chap_num
+    folder_name = "comic_{0}_chapnum_{1}".format(comic_id, chap_num)
+    return os.path.join("chap", folder_name, filename)
 
 
 def get_image_upload_path(instance, filename):
