@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "304f0b2a-73b5-49a0-a770-eba8cca4ed3e",
+		"_postman_id": "6dee3aac-e773-46f8-8766-5a642d616a82",
 		"name": "comment",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests a user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -74,10 +74,6 @@
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://127.0.0.1:8080/api/Home",
 							"protocol": "http",
@@ -94,8 +90,8 @@
 							]
 						}
 					},
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
 					"body": ""
 				}
@@ -109,7 +105,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5NjQ1NDQ3LCJpYXQiOjE2Nzk2NDI0NDcsImp0aSI6ImI1YjY2MjMzN2MyOTRkMGRhNDA0MzExMTY5ZWYzNzU1IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJuaGFuIiwiaWQiOjJ9.RhojVTbc5Y3jELgew4NQe1lRIJQJRGMWWrX2Ve7Gd3s",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgxODAyNjUyLCJpYXQiOjE2ODA1MDY2NTIsImp0aSI6ImQ4MDM0YWY0MDU4ZjRmZTliMDBkMjkwNzQ0NThiMDljIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJuaGFuIiwiaWQiOjJ9.NHLW_WMSK6PYW3K5M5oTzFMg2eq14AeDbCIDZtPApwY",
 							"type": "string"
 						}
 					]
@@ -129,6 +125,11 @@
 							"value": "5",
 							"type": "text",
 							"disabled": true
+						},
+						{
+							"key": "parent_id",
+							"value": "104",
+							"type": "text"
 						}
 					]
 				},
@@ -157,10 +158,6 @@
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://127.0.0.1:8080/api/Home",
 							"protocol": "http",
@@ -177,8 +174,8 @@
 							]
 						}
 					},
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
 					"body": ""
 				}

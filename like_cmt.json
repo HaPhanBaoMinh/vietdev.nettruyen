@@ -28,17 +28,6 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "avatar",
-							"type": "file",
-							"src": "/Users/vietdev/Downloads/anh-3d-thien-nhien.jpeg"
-						},
-						{
-							"key": "id",
-							"value": "2",
-							"type": "text",
-							"disabled": true
-						},
-						{
 							"key": "username",
 							"value": "nhan1",
 							"type": "text",
@@ -47,7 +36,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/comics/cmt_like/90",
+					"raw": "http://127.0.0.1:8000/api/comics/cmt_like/104",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -60,7 +49,7 @@
 						"api",
 						"comics",
 						"cmt_like",
-						"90"
+						"104"
 					]
 				}
 			},
