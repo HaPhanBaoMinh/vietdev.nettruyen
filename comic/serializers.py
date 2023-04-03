@@ -56,25 +56,31 @@ class CommentPostSerializer(ModelSerializer):
         fields = ('comic', 'content', 'chap', 'user', 'parent')
         # depth = 1
 
-
-class CommenReplytSerializer(ModelSerializer):
-    comic = GetComicNameSerializer()
-    user = UserSerializer()
-
-    class Meta:
-        model = Comment
-        fields = ['id', 'comic', 'user', 'content', 'created_at', 'update_at', 'removed', 'edited', 'chap', 'parent', 'likes_num']
-    def to_representation(self, instance):
-        res = super(CommenReplytSerializer, self).to_representation(instance)
-        return {res['parent']: res}
-
 class CommentSerializer(ModelSerializer):
     comic = GetComicNameSerializer()
     user = UserSerializer()
 
     class Meta:
         model = Comment
-        fields = '__all__'
+        fields = ['id', 'comic', 'user', 'content', 'created_at', 'update_at', 'removed', 'edited', 'chap', 'likes_num']
+
+
+class CommenReplytSerializer(ModelSerializer):
+    comic = GetComicNameSerializer()
+    user = UserSerializer()
+    replies = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Comment
+        fields = ['id', 'comic', 'user', 'content', 'created_at', 'update_at', 'removed', 'edited', 'chap', 'replies', 'likes_num']
+
+    def get_replies(self, obj, depth=0):
+        if depth == 1:
+            return []
+        else:
+            replies = Comment.objects.filter(parent=obj.id)
+            serializer = CommentSerializer(instance=replies, many=True)
+            return serializer.data
 
 
 

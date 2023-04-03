@@ -88,7 +88,7 @@ class CommentAPI(generics.ListCreateAPIView):
     queryset = Comment.objects.all().order_by('-created_at')
     serializer_class = CommentPostSerializer
     def get(self, request, id, id_chap):
-        comments = Comment.objects.filter(comic=id, removed=False).order_by('-created_at')
+        comments = Comment.objects.filter(comic=id, removed=False, parent=None).order_by('-created_at')
         serializer_reply = CommenReplytSerializer(comments, many=True)
         return Response(serializer_reply.data, status=200)
 
