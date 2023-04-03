@@ -69,6 +69,7 @@ class Comment(models.Model):
     removed = models.BooleanField(default=False)
     edited = models.BooleanField(default=False)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='liked_posts')
+    likes_num = models.IntegerField(default=0)
     parent = models.ForeignKey('self', null=True, on_delete=models.CASCADE, related_name='replies')
 
     class Meta:

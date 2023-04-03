@@ -12,6 +12,6 @@ urlpatterns = [
     path('/history/', views.history_view),
     path('/cmt_like/<int:cmt_id>', views.like_cmt),
     path('/rate/<int:comic_id>', RateViewAPI.as_view()),
-    path('/put_cmt/<int:comic_id>/<int:cmt_id>', views.PutComment),
+    path('/put_cmt/<int:cmt_id>', views.PutComment),
     path('/<str:sort_field>/<int:page_num>', views.getComicBySortFiled)
 ]

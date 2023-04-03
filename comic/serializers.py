@@ -1,8 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from comic.models import Comic, Genre, Chap, Comment, Rating, History
 from rest_framework import serializers
-from django.contrib.auth.models import User
-# from user.serializers import UserSerializer
 from user.models import MyUser
 class GenreSerializer(ModelSerializer):
     class Meta:
@@ -59,16 +57,26 @@ class CommentPostSerializer(ModelSerializer):
         # depth = 1
 
 
+class CommenReplytSerializer(ModelSerializer):
+    comic = GetComicNameSerializer()
+    user = UserSerializer()
+
+    class Meta:
+        model = Comment
+        fields = ['id', 'comic', 'user', 'content', 'created_at', 'update_at', 'removed', 'edited', 'chap', 'parent', 'likes_num']
+    def to_representation(self, instance):
+        res = super(CommenReplytSerializer, self).to_representation(instance)
+        return {res['parent']: res}
+
 class CommentSerializer(ModelSerializer):
     comic = GetComicNameSerializer()
     user = UserSerializer()
-    # parent = CommentPostSerializer()
 
     class Meta:
         model = Comment
         fields = '__all__'
-        extra_fields = ['number']
-        # depth = 1
+
+
 
 class CommentPutSerializer(ModelSerializer):
     class Meta:
