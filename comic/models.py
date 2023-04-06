@@ -61,7 +61,7 @@ class Chap(models.Model):
 
 class Comment(models.Model):
     comic = models.ForeignKey(Comic,  related_name='comic', editable=False, on_delete=models.CASCADE)
-    chap = models.ForeignKey(Chap, editable=False, on_delete=models.CASCADE)
+    chap = models.ForeignKey(Chap, null=True, editable=False, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)

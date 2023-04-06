@@ -136,6 +136,16 @@ WSGI_APPLICATION = 'nettruyen.wsgi.application'
 
 # Postgres database (live)
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'net_truyen',
+#         'USER': 'postgres',
+#         'PASSWORD': '02122001',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 env = environ.Env()
 environ.Env.read_env()

@@ -111,32 +111,70 @@ def getComicDetail(request, comic_id):
 ######## COMMENT ###########
 
 # GET API-CMT  /comics/comic_id
-class CommentAPI(generics.ListCreateAPIView):
-    queryset = Comment.objects.all().order_by('-created_at')
-    serializer_class = CommentPostSerializer
 
-    def get(self, request, id, id_chap):
-        comments = Comment.objects.filter(comic=id, removed=False, parent=None).order_by('-created_at')
-        serializer_reply = CommenReplytSerializer(comments, many=True)
-        return Response(serializer_reply.data, status=200)
+#POST cmt in chap
+@api_view(['POST'])
+def CommentAPI(request, id, id_chap):
+    content = request.data.get('content')
+    parent_id = request.data.get('parent_id')
+    if request.user.is_authenticated:
+        user = request.user
+        if parent_id == None:
+            data = Comment.objects.create(user=user, comic_id=id, chap_id=id_chap, content=content, )
+        else:
+            parent = Comment.objects.get(id=parent_id)
+            data = Comment.objects.create(user=user, comic_id=id, chap_id=id_chap, content=content, parent=parent, )
+        data.save()
+        serializer_comment = CommentPostSerializer(data)
+        return Response(serializer_comment.data, status=status.HTTP_201_CREATED)
+    return Response({'msg': 'user not authenticated'})
 
-    def post(self, request, id, id_chap):
+
+#POST cmt in comic
+@api_view(['POST'])
+def comment_post_api(request, comic_id):
+    if request.method == 'POST':
         content = request.data.get('content')
         parent_id = request.data.get('parent_id')
         if request.user.is_authenticated:
             user = request.user
             if parent_id == None:
-                data = Comment.objects.create(user=user, comic_id=id, chap_id=id_chap, content=content, )
+                data = Comment.objects.create(user=user, comic_id=comic_id, content=content)
             else:
                 parent = Comment.objects.get(id=parent_id)
-                data = Comment.objects.create(user=user, comic_id=id, chap_id=id_chap, content=content, parent=parent, )
+                data = Comment.objects.create(user=user, comic_id=comic_id, content=content, parent=parent)
             data.save()
             serializer_comment = CommentPostSerializer(data)
             return Response(serializer_comment.data, status=status.HTTP_201_CREATED)
         return Response({'msg': 'user not authenticated'})
 
 
-# 1 fields content can update
+#GET cmt by num page
+@api_view(['GET'])
+def get_cmt_num(request, comic_id, cmt_num):
+    if request.method == 'GET':
+        comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('-created_at')
+        paginator = Paginator(comments, 15)
+        cmt_paginator = paginator.get_page(cmt_num)
+        serializer_reply = CommenReplytSerializer(cmt_paginator, many=True)
+        return Response(serializer_reply.data, status=200)
+
+#SORT cmt 1=newest, other=oldest
+@api_view(['GET'])
+def comment_sort(request, comic_id, cmt_num, new):
+    if new == 1:
+        comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('-created_at')
+
+    else:
+        comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('created_at')
+
+    paginator = Paginator(comments, 15)
+    cmt_paginator = paginator.get_page(cmt_num)
+    serializer_reply = CommenReplytSerializer(cmt_paginator, many=True)
+    return Response(serializer_reply.data, status=200)
+
+
+# DELETE and PUT, 1 fields content can update
 @api_view(['PUT', 'DELETE'])
 def put_comment(request, cmt_id):
     if request.method == 'PUT':
@@ -165,9 +203,10 @@ def put_comment(request, cmt_id):
         return Response({'msg': 'user not authenticated'})
 
 
-@api_view(['GET'])
+
+@api_view(['POST'])
 def like_cmt(request, cmt_id):
-    if request.method == 'GET':
+    if request.method == 'POST':
         cmt = get_object_or_404(Comment, id=cmt_id)
         user = request.user
         if user.is_authenticated:
@@ -192,10 +231,9 @@ def rate_view_API(request, comic_id):
     if request.user.is_authenticated:
         user = request.user
         try:
-            data = Rating.objects.create(user=user, comic_id=comic_id, stars=stars)
+            Rating.objects.update_or_create(user=user, comic_id=comic_id, defaults={'stars': stars})
         except:
             return Response({'msg': '1 user only rate 1 times'})
-        data.save()
         comics = Comic.objects.get(id=comic_id)
         rates = Rating.objects.filter(comic=comic_id, removed=False).aggregate(Avg('stars'))['stars__avg']
         comics.rating = rates
@@ -203,27 +241,3 @@ def rate_view_API(request, comic_id):
         return Response(rates, status=200)
     return Response({'msg': 'user not authenticated'})
 
-
-# HISTORY API
-@api_view(['POST'])
-def history(request, comic_id, chap_id):
-    if request.method == 'POST':
-        user = request.user
-        if user.is_authenticated:
-            try:
-                history, created = History.objects.update_or_create(comic_id=comic_id, user=user,
-                                                                    defaults={'chap_id': chap_id}, )
-                history.save()
-                return Response({'msg': 'history add'})
-            except:
-                return Response({'msg': 'invalid'})
-        return Response({'msg': 'user not authenticated'})
-
-
-@api_view(['GET'])
-def history_view(request):
-    if request.method == 'GET':
-        user = request.user
-        history = History.objects.filter(user=user, removed_history=False)
-        serializer_history = ComicHistorySerializer(history, many=True)
-        return Response(serializer_history.data, status=200)
