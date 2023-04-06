@@ -3,6 +3,8 @@ from django.db import models
 from django.apps import apps
 import os
 from datetime import datetime
+from django.conf import settings
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Genre(models.Model):
@@ -28,7 +30,7 @@ class Comic(models.Model):
     name = models.CharField(max_length=255, null=False)
     other_name = models.CharField(max_length=255, blank=True)
     author = models.CharField(max_length=255, null=False, default=None)
-    sumary = models.CharField(max_length=255, null=False)
+    summary = models.CharField(max_length=255, null=False)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
     updated_at = models.DateTimeField(auto_now=True, null=False)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, null=True)
@@ -83,3 +85,46 @@ class Image(models.Model):
 
     def __str__(self):
         return f"{self.order} {self.image.url} {self.chap} {self.comic}"
+
+
+class Comment(models.Model):
+    comic = models.ForeignKey(
+        Comic,  related_name='comic_comment', editable=False, on_delete=models.CASCADE)
+    chap = models.ForeignKey(Chap, editable=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             editable=False, on_delete=models.CASCADE)
+    content = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+    removed = models.BooleanField(default=False)
+    edited = models.BooleanField(default=False)
+    likes = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name='liked_posts')
+    likes_num = models.IntegerField(default=0)
+    parent = models.ForeignKey(
+        'self', null=True, on_delete=models.CASCADE, related_name='replies')
+
+    class Meta:
+        ordering = ('created_at',)
+
+    def __str_(self):
+        return f"{self.user} {self.content} {self.chap} {self.updated_at}"
+
+
+class Rating (models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             editable=False, on_delete=models.CASCADE)
+    comic = models.ForeignKey(
+        Comic, related_name='comic_id', editable=False, on_delete=models.CASCADE)
+    stars = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)])
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+    removed = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = (('user', 'comic'),)
+        index_together = (('user', 'comic'),)
+
+    def __str__(self):
+        return f'{self.user} - {self.comic}'

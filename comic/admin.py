@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Genre, Comic, Chap, Image
+from .models import Genre, Comic, Chap, Image, Comment, Rating
 # Register your models here.
 admin.site.register(Genre)
 # admin.site.register(Chap)
@@ -26,3 +26,13 @@ class ImageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Image, ImageAdmin)
+
+
+@admin.register(Comment)
+class Comment(admin.ModelAdmin):
+    list_display = ('comic', 'user', 'content')
+
+
+@admin.register(Rating)
+class Comment(admin.ModelAdmin):
+    list_display = ('comic', 'user', 'stars')
