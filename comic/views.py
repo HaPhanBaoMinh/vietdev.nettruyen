@@ -1,8 +1,8 @@
 from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import get_object_or_404
 from .models import Comic, Genre, Chap, Comment, Rating, History
-from .serializers import ComicSerializer, ChapSerializer, CommentPostSerializer
-from .serializers import CommentPutSerializer, ComicHistorySerializer, CommenReplytSerializer
+from .serializers import ComicSerializer, ChapSerializer
+from .serializers import CommentPutSerializer, CommentSerializer, CommenReplytSerializer
 from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import FieldError
 from rest_framework.decorators import api_view
@@ -125,14 +125,14 @@ def CommentAPI(request, id, id_chap):
             parent = Comment.objects.get(id=parent_id)
             data = Comment.objects.create(user=user, comic_id=id, chap_id=id_chap, content=content, parent=parent, )
         data.save()
-        serializer_comment = CommentPostSerializer(data)
+        serializer_comment = CommentSerializer(data)
         return Response(serializer_comment.data, status=status.HTTP_201_CREATED)
     return Response({'msg': 'user not authenticated'})
 
 
 #POST cmt in comic
 @api_view(['POST'])
-def comment_post_api(request, comic_id):
+def comment_post_comic_api(request, comic_id):
     if request.method == 'POST':
         content = request.data.get('content')
         parent_id = request.data.get('parent_id')
@@ -144,7 +144,7 @@ def comment_post_api(request, comic_id):
                 parent = Comment.objects.get(id=parent_id)
                 data = Comment.objects.create(user=user, comic_id=comic_id, content=content, parent=parent)
             data.save()
-            serializer_comment = CommentPostSerializer(data)
+            serializer_comment = CommentSerializer(data)
             return Response(serializer_comment.data, status=status.HTTP_201_CREATED)
         return Response({'msg': 'user not authenticated'})
 

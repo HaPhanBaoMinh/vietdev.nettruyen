@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e018497d-50b9-46dd-b687-a01940a37198",
+		"_postman_id": "e8b0811b-6fee-4602-9d98-6498a74103e6",
 		"name": "comment",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests a user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "get_cmt",
+			"name": "get_cmt_comic_pagenum",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true,
 				"disabledSystemHeaders": {}
@@ -50,7 +50,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/comics/cmt/1/2",
+					"raw": "http://127.0.0.1:8000/api/comics/get_cmt/1/2",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -62,7 +62,7 @@
 					"path": [
 						"api",
 						"comics",
-						"cmt",
+						"get_cmt",
 						"1",
 						"2"
 					]
@@ -129,7 +129,8 @@
 						{
 							"key": "parent_id",
 							"value": "116",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
@@ -260,6 +261,51 @@
 						"put_cmt",
 						"1",
 						"33"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_cmt_theo_comic",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgyMDU3Mjc0LCJpYXQiOjE2ODA3NjEyNzQsImp0aSI6ImIzNjBmMzFkNmJhYzRmNGFhYzJmODM5MWY4MDI4ZDU3IiwidXNlcl9pZCI6NDIsInVzZXJuYW1lIjoibmhhbjIiLCJpZCI6NDJ9.3p-yJJ2MuaURYSnqmX8hwI8oWE7lQgo6t114stgrtPA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "content",
+							"value": "ok",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/comics/cmt/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"comics",
+						"cmt",
+						"1"
 					]
 				}
 			},

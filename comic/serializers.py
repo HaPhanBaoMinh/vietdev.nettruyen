@@ -50,11 +50,11 @@ class UserSerializer(ModelSerializer):
         fields = ['username']
 
 
-class CommentPostSerializer(ModelSerializer):
-    class Meta:
-        model = Comment
-        fields = ('comic', 'content', 'chap', 'user', 'parent')
-        # depth = 1
+# class CommentPostSerializer(ModelSerializer):
+#     class Meta:
+#         model = Comment
+#         fields = ('comic', 'content', 'chap', 'user', 'parent')
+#         # depth = 1
 
 class CommentSerializer(ModelSerializer):
     comic = GetComicNameSerializer()
