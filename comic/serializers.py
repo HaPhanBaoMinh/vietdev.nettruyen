@@ -49,13 +49,6 @@ class UserSerializer(ModelSerializer):
         model = MyUser
         fields = ['username']
 
-
-# class CommentPostSerializer(ModelSerializer):
-#     class Meta:
-#         model = Comment
-#         fields = ('comic', 'content', 'chap', 'user', 'parent')
-#         # depth = 1
-
 class CommentSerializer(ModelSerializer):
     comic = GetComicNameSerializer()
     user = UserSerializer()
@@ -63,7 +56,6 @@ class CommentSerializer(ModelSerializer):
     class Meta:
         model = Comment
         fields = ['id', 'comic', 'user', 'content', 'created_at', 'update_at', 'removed', 'edited', 'chap', 'likes_num']
-
 
 class CommenReplytSerializer(ModelSerializer):
     comic = GetComicNameSerializer()
@@ -82,13 +74,10 @@ class CommenReplytSerializer(ModelSerializer):
             serializer = CommentSerializer(instance=replies, many=True)
             return serializer.data
 
-
-
 class CommentPutSerializer(ModelSerializer):
     class Meta:
         model = Comment
         fields = ('id', 'content')
-
 
 class GetChapnum(ModelSerializer):
     class Meta:

@@ -230,10 +230,7 @@ def rate_view_API(request, comic_id):
     stars = request.data.get('stars')
     if request.user.is_authenticated:
         user = request.user
-        try:
-            Rating.objects.update_or_create(user=user, comic_id=comic_id, defaults={'stars': stars})
-        except:
-            return Response({'msg': '1 user only rate 1 times'})
+        Rating.objects.update_or_create(user=user, comic_id=comic_id, defaults={'stars': stars})
         comics = Comic.objects.get(id=comic_id)
         rates = Rating.objects.filter(comic=comic_id, removed=False).aggregate(Avg('stars'))['stars__avg']
         comics.rating = rates
