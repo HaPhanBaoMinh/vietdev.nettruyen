@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from django.http import HttpResponse
-from .views import CommentAPI, RateViewAPI
+from .views import CommentAPI
 
 urlpatterns = [
     path('/', views.index),
@@ -11,7 +11,7 @@ urlpatterns = [
     path('/history/<int:comic_id>/<int:chap_id>', views.history),
     path('/history/', views.history_view),
     path('/cmt_like/<int:cmt_id>', views.like_cmt),
-    path('/rate/<int:comic_id>', RateViewAPI.as_view()),
-    path('/put_cmt/<int:cmt_id>', views.PutComment),
+    path('/rate/<int:comic_id>', views.rate_view_API),
+    path('/put_cmt/<int:cmt_id>', views.put_comment),
     path('/<str:sort_field>/<int:page_num>', views.getComicBySortFiled)
 ]

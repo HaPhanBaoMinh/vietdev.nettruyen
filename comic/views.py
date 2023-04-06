@@ -1,38 +1,64 @@
-from django.contrib.contenttypes.models import ContentType
 from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import get_object_or_404
-from django.views.decorators.http import require_POST
-
 from .models import Comic, Genre, Chap, Comment, Rating, History
-from .serializers import ComicSerializer, ChapSerializer, CommentSerializer, CommentPostSerializer
-from .serializers import CommentPutSerializer, RatingSerializer, ComicHistorySerializer, CommenReplytSerializer
+from .serializers import ComicSerializer, ChapSerializer, CommentPostSerializer
+from .serializers import CommentPutSerializer, ComicHistorySerializer, CommenReplytSerializer
 from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import FieldError
-from django.utils import timezone
-from django.db.models import Q
 from rest_framework.decorators import api_view
 from rest_framework import status, generics
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from django.db.models import Avg
 
 
 def index(request):
     return HttpResponse("comics")
 
+
 # GET - api/comics/<sort_field>/<page_num>
 def getComicBySortFiled(request, page_num, sort_field):
     try:
-    # Get newest chap 
         comicsSofted = Comic.objects.all().order_by(sort_field)
-        paginator = Paginator(comicsSofted, 10)
+
+        #sort by gender:
+        if sort_field == '-gender':
+            comicsSofted = comicsSofted.filter(gender='female')
+        if sort_field == 'gender':
+            comicsSofted = comicsSofted.filter('male')
+
+
+        status = request.GET.get('status', '')
+        if status:
+            comicsSofted = comicsSofted.filter(status=status)
+
+            # If query parameters genre is valid
+        genreSlug = request.GET.get('genre', '')
+        if genreSlug:
+            genre = Genre.objects.get(slug=str(genreSlug))
+            comicsSofted = comicsSofted.filter(genres=genre)
+
+        paginator = Paginator(comicsSofted, 36)
+
+        # If sort by view count by day, week, month just return 7 comic
+        if sort_field == '-view_day' or sort_field == '-view_week' or sort_field == '-view_month' and not genreSlug and not status:
+            paginator = Paginator(comicsSofted, 7)
+
+        # If sort by view count just return 20 comic
+        if sort_field == '-view' and not genreSlug and not status:
+            paginator = Paginator(comicsSofted, 20)
+
         page_comic = paginator.page(page_num)
+    #
+    # try:
+    #     # Get newest chap
+    #     comicsSofted = Comic.objects.all().order_by(sort_field)
+    #     paginator = Paginator(comicsSofted, 10)
+    #     page_comic = paginator.page(page_num)
 
     except FieldError:
         return JsonResponse({'error': 'Page not found'}, status=404)
     except EmptyPage:
         return JsonResponse({'error': 'Page not found'}, status=404)
-    
 
     serialized_comics = []
     for comic in page_comic:
@@ -56,7 +82,7 @@ def getComicBySortFiled(request, page_num, sort_field):
             'view': comic.view,
             'rating': comic.rating,
             'image': comic.image.url,
-            'follower': comic.follower, 
+            'follower': comic.follower,
             'comment': comic.comment,
             'chap': comic.chap,
             "latest_chaps": serialized_chap.data
@@ -69,6 +95,7 @@ def getComicBySortFiled(request, page_num, sort_field):
         serialized_comics.append(serialized_comic)
 
     return JsonResponse(serialized_comics, safe=False)
+
 
 # GET - api/comics/<comic_id>
 @api_view(['GET'])
@@ -83,10 +110,11 @@ def getComicDetail(request, comic_id):
 
 ######## COMMENT ###########
 
-#GET API-CMT  /comics/comic_id
+# GET API-CMT  /comics/comic_id
 class CommentAPI(generics.ListCreateAPIView):
     queryset = Comment.objects.all().order_by('-created_at')
     serializer_class = CommentPostSerializer
+
     def get(self, request, id, id_chap):
         comments = Comment.objects.filter(comic=id, removed=False, parent=None).order_by('-created_at')
         serializer_reply = CommenReplytSerializer(comments, many=True)
@@ -98,18 +126,19 @@ class CommentAPI(generics.ListCreateAPIView):
         if request.user.is_authenticated:
             user = request.user
             if parent_id == None:
-                data = Comment.objects.create(user=user, comic_id=id, chap_id=id_chap, content=content,)
+                data = Comment.objects.create(user=user, comic_id=id, chap_id=id_chap, content=content, )
             else:
                 parent = Comment.objects.get(id=parent_id)
-                data = Comment.objects.create(user=user, comic_id=id, chap_id=id_chap, content=content, parent=parent,)
+                data = Comment.objects.create(user=user, comic_id=id, chap_id=id_chap, content=content, parent=parent, )
             data.save()
             serializer_comment = CommentPostSerializer(data)
             return Response(serializer_comment.data, status=status.HTTP_201_CREATED)
         return Response({'msg': 'user not authenticated'})
 
-#1 fields content can update
+
+# 1 fields content can update
 @api_view(['PUT', 'DELETE'])
-def PutComment(request, cmt_id):
+def put_comment(request, cmt_id):
     if request.method == 'PUT':
         try:
             cmt = Comment.objects.get(id=cmt_id)
@@ -156,43 +185,40 @@ def like_cmt(request, cmt_id):
             data = {'message': 'User not authenticated'}
             return JsonResponse(data, status=401)
 
-class RateViewAPI(generics.ListCreateAPIView):
-    queryset = Rating.objects.filter(removed=False).order_by('-created_at')
-    serializer_class = RatingSerializer
-    def post(self, request, comic_id):
-        stars = request.data.get('stars')
-        if request.user.is_authenticated:
-            user = request.user
-            try:
-                data = Rating.objects.create(
-                    user=user,
-                    comic_id=comic_id,
-                    stars=stars,
-                )
-            except:
-                return Response({'msg': '1 user only rate 1 times'})
-            data.save()
-            comics = Comic.objects.get(id=comic_id)
-            rates = Rating.objects.filter(comic=comic_id, removed=False).aggregate(Avg('stars'))['stars__avg']
-            comics.rating = rates
-            comics.save()
-            return Response(rates, status=200)
-        return Response({'msg': 'user not authenticated'})
+
+@api_view(['POST'])
+def rate_view_API(request, comic_id):
+    stars = request.data.get('stars')
+    if request.user.is_authenticated:
+        user = request.user
+        try:
+            data = Rating.objects.create(user=user, comic_id=comic_id, stars=stars)
+        except:
+            return Response({'msg': '1 user only rate 1 times'})
+        data.save()
+        comics = Comic.objects.get(id=comic_id)
+        rates = Rating.objects.filter(comic=comic_id, removed=False).aggregate(Avg('stars'))['stars__avg']
+        comics.rating = rates
+        comics.save()
+        return Response(rates, status=200)
+    return Response({'msg': 'user not authenticated'})
 
 
-#HISTORY API
+# HISTORY API
 @api_view(['POST'])
 def history(request, comic_id, chap_id):
     if request.method == 'POST':
         user = request.user
         if user.is_authenticated:
             try:
-                history, created = History.objects.update_or_create(comic_id=comic_id, user=user, defaults={'chap_id': chap_id},)
+                history, created = History.objects.update_or_create(comic_id=comic_id, user=user,
+                                                                    defaults={'chap_id': chap_id}, )
                 history.save()
                 return Response({'msg': 'history add'})
             except:
                 return Response({'msg': 'invalid'})
         return Response({'msg': 'user not authenticated'})
+
 
 @api_view(['GET'])
 def history_view(request):
@@ -201,4 +227,3 @@ def history_view(request):
         history = History.objects.filter(user=user, removed_history=False)
         serializer_history = ComicHistorySerializer(history, many=True)
         return Response(serializer_history.data, status=200)
-

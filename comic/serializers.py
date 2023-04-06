@@ -90,15 +90,11 @@ class CommentPutSerializer(ModelSerializer):
         fields = ('id', 'content')
 
 
-class RatingSerializer(ModelSerializer):
-    class Meta:
-        model = Rating
-        fields = ('id', 'user', 'comic', 'stars')
-
 class GetChapnum(ModelSerializer):
     class Meta:
         model = Chap
         fields = ['chap_num']
+
 class ComicHistorySerializer(ModelSerializer):
     comic = GetComicNameSerializer()
     chap = GetChapnum()
