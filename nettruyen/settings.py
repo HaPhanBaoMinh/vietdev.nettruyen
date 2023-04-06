@@ -130,8 +130,12 @@ WSGI_APPLICATION = 'nettruyen.wsgi.application'
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'comicplatform_db',
+#         'USER': 'comicplatform_user',
+#         'PASSWORD': 'TEQtda4rzx4vdmywu',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
 #     }
 # }
 

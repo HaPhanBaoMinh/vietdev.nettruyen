@@ -1,5 +1,6 @@
 from rest_framework.serializers import ModelSerializer
-from comic.models import Comic, Genre, Chap, Image
+from comic.models import Comic, Genre, Chap, Image, Comment, Rating
+from user.models import MyUser
 from rest_framework import serializers
 
 
@@ -71,3 +72,63 @@ class ImageSerializer(serializers.ModelSerializer):
         format='%Y-%m-%d %H:%M:%S', read_only=True)
     updated_at = serializers.DateTimeField(
         format='%Y-%m-%d %H:%M:%S', read_only=True)
+
+
+class CommentPostSerializer(ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ('comic', 'content', 'chap', 'user', 'parent')
+        # depth = 1
+
+
+class UserSerializer(ModelSerializer):
+    class Meta:
+        model = MyUser
+        fields = ['username']
+
+
+class GetComicNameSerializer(ModelSerializer):
+    class Meta:
+        model = Comic
+        fields = ['name']
+
+
+class CommentSerializer(ModelSerializer):
+    comic = GetComicNameSerializer()
+    user = UserSerializer()
+
+    class Meta:
+        model = Comment
+        fields = ['id', 'comic', 'user', 'content', 'created_at',
+                  'update_at', 'removed', 'edited', 'chap', 'likes_num']
+
+
+class CommenReplytSerializer(ModelSerializer):
+    comic = GetComicNameSerializer()
+    user = UserSerializer()
+    replies = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Comment
+        fields = ['id', 'comic', 'user', 'content', 'created_at',
+                  'update_at', 'removed', 'edited', 'chap', 'replies', 'likes_num']
+
+    def get_replies(self, obj, depth=0):
+        if depth == 1:
+            return []
+        else:
+            replies = Comment.objects.filter(parent=obj.id)
+            serializer = CommentSerializer(instance=replies, many=True)
+            return serializer.data
+
+
+class CommentPutSerializer(ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ('id', 'content')
+
+
+class RatingSerializer(ModelSerializer):
+    class Meta:
+        model = Rating
+        fields = ('id', 'user', 'comic', 'stars')

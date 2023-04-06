@@ -2,105 +2,17 @@
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_1/order_6.jpg",
-      "order": 6,
+      "image": "chap/comic_77_chapnum_1/order_18.jpg",
+      "order": 18,
       "chap_id": 377
     }
   },
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_1/order_0.jpg",
-      "order": 0,
+      "image": "chap/comic_77_chapnum_1/order_14.jpg",
+      "order": 14,
       "chap_id": 377
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_2/order_0.jpg",
-      "order": 0,
-      "chap_id": 378
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_2/order_3.jpg",
-      "order": 3,
-      "chap_id": 378
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_1/order_10.jpg",
-      "order": 10,
-      "chap_id": 377
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_1/order_9.jpg",
-      "order": 9,
-      "chap_id": 377
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_1/order_2.jpg",
-      "order": 2,
-      "chap_id": 377
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_1/order_8.jpg",
-      "order": 8,
-      "chap_id": 377
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_1/order_5.jpg",
-      "order": 5,
-      "chap_id": 377
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_1/order_11.jpg",
-      "order": 11,
-      "chap_id": 377
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_2/order_8.jpg",
-      "order": 8,
-      "chap_id": 378
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_2/order_6.jpg",
-      "order": 6,
-      "chap_id": 378
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_2/order_2.jpg",
-      "order": 2,
-      "chap_id": 378
     }
   },
   {
@@ -108,30 +20,6 @@
     "fields": {
       "image": "chap/comic_77_chapnum_1/order_7.jpg",
       "order": 7,
-      "chap_id": 377
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_1/order_13.jpg",
-      "order": 13,
-      "chap_id": 377
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_1/order_15.jpg",
-      "order": 15,
-      "chap_id": 377
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_1/order_1.jpg",
-      "order": 1,
       "chap_id": 377
     }
   },
@@ -146,64 +34,32 @@
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_2/order_9.jpg",
-      "order": 9,
-      "chap_id": 378
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_2/order_7.jpg",
-      "order": 7,
-      "chap_id": 378
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_3/order_6.jpg",
-      "order": 6,
-      "chap_id": 379
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_3/order_0.jpg",
-      "order": 0,
-      "chap_id": 379
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_3/order_8.jpg",
-      "order": 8,
-      "chap_id": 379
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_3/order_2.jpg",
-      "order": 2,
-      "chap_id": 379
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_1/order_3.jpg",
-      "order": 3,
+      "image": "chap/comic_77_chapnum_1/order_10.jpg",
+      "order": 10,
       "chap_id": 377
     }
   },
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_1/order_4.jpg",
-      "order": 4,
+      "image": "chap/comic_77_chapnum_1/order_16.jpg",
+      "order": 16,
+      "chap_id": 377
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_1/order_0.jpg",
+      "order": 0,
+      "chap_id": 377
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_1/order_1.jpg",
+      "order": 1,
       "chap_id": 377
     }
   },
@@ -218,72 +74,120 @@
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_2/order_4.jpg",
-      "order": 4,
+      "image": "chap/comic_77_chapnum_2/order_21.jpg",
+      "order": 21,
       "chap_id": 378
     }
   },
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_1/order_14.jpg",
-      "order": 14,
+      "image": "chap/comic_77_chapnum_1/order_2.jpg",
+      "order": 2,
       "chap_id": 377
     }
   },
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_3/order_15.jpg",
-      "order": 15,
-      "chap_id": 379
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_3/order_7.jpg",
-      "order": 7,
-      "chap_id": 379
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_3/order_11.jpg",
-      "order": 11,
-      "chap_id": 379
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_3/order_13.jpg",
+      "image": "chap/comic_77_chapnum_1/order_13.jpg",
       "order": 13,
-      "chap_id": 379
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_3/order_16.jpg",
-      "order": 16,
-      "chap_id": 379
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_1/order_16.jpg",
-      "order": 16,
       "chap_id": 377
     }
   },
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_2/order_5.jpg",
-      "order": 5,
+      "image": "chap/comic_77_chapnum_2/order_8.jpg",
+      "order": 8,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_2.jpg",
+      "order": 2,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_1/order_6.jpg",
+      "order": 6,
+      "chap_id": 377
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_0.jpg",
+      "order": 0,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_9.jpg",
+      "order": 9,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_1/order_4.jpg",
+      "order": 4,
+      "chap_id": 377
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_7.jpg",
+      "order": 7,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_3.jpg",
+      "order": 3,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_1/order_8.jpg",
+      "order": 8,
+      "chap_id": 377
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_26.jpg",
+      "order": 26,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_73.jpg",
+      "order": 73,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_36.jpg",
+      "order": 36,
       "chap_id": 378
     }
   },
@@ -298,24 +202,24 @@
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_3/order_5.jpg",
-      "order": 5,
-      "chap_id": 379
+      "image": "chap/comic_77_chapnum_2/order_19.jpg",
+      "order": 19,
+      "chap_id": 378
     }
   },
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_3/order_10.jpg",
-      "order": 10,
-      "chap_id": 379
+      "image": "chap/comic_77_chapnum_1/order_3.jpg",
+      "order": 3,
+      "chap_id": 377
     }
   },
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_2/order_13.jpg",
-      "order": 13,
+      "image": "chap/comic_77_chapnum_2/order_11.jpg",
+      "order": 11,
       "chap_id": 378
     }
   },
@@ -330,24 +234,72 @@
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_3/order_12.jpg",
-      "order": 12,
-      "chap_id": 379
-    }
-  },
-  {
-    "model": "comic.Image",
-    "fields": {
-      "image": "chap/comic_77_chapnum_2/order_16.jpg",
-      "order": 16,
+      "image": "chap/comic_77_chapnum_2/order_6.jpg",
+      "order": 6,
       "chap_id": 378
     }
   },
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_2/order_11.jpg",
-      "order": 11,
+      "image": "chap/comic_77_chapnum_2/order_15.jpg",
+      "order": 15,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_1/order_5.jpg",
+      "order": 5,
+      "chap_id": 377
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_1/order_17.jpg",
+      "order": 17,
+      "chap_id": 377
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_24.jpg",
+      "order": 24,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_33.jpg",
+      "order": 33,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_13.jpg",
+      "order": 13,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_1/order_9.jpg",
+      "order": 9,
+      "chap_id": 377
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_32.jpg",
+      "order": 32,
       "chap_id": 378
     }
   },
@@ -362,24 +314,480 @@
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_3/order_14.jpg",
-      "order": 14,
+      "image": "chap/comic_77_chapnum_2/order_5.jpg",
+      "order": 5,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_72.jpg",
+      "order": 72,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_62.jpg",
+      "order": 62,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_60.jpg",
+      "order": 60,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_71.jpg",
+      "order": 71,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_1/order_11.jpg",
+      "order": 11,
+      "chap_id": 377
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_81.jpg",
+      "order": 81,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_82.jpg",
+      "order": 82,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_22.jpg",
+      "order": 22,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_53.jpg",
+      "order": 53,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_79.jpg",
+      "order": 79,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_55.jpg",
+      "order": 55,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_70.jpg",
+      "order": 70,
       "chap_id": 379
     }
   },
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_3/order_9.jpg",
-      "order": 9,
+      "image": "chap/comic_77_chapnum_2/order_16.jpg",
+      "order": 16,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_28.jpg",
+      "order": 28,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_17.jpg",
+      "order": 17,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_80.jpg",
+      "order": 80,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_65.jpg",
+      "order": 65,
       "chap_id": 379
     }
   },
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_3/order_3.jpg",
-      "order": 3,
+      "image": "chap/comic_77_chapnum_2/order_78.jpg",
+      "order": 78,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_89.jpg",
+      "order": 89,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_84.jpg",
+      "order": 84,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_80.jpg",
+      "order": 80,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_61.jpg",
+      "order": 61,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_84.jpg",
+      "order": 84,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_83.jpg",
+      "order": 83,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_65.jpg",
+      "order": 65,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_43.jpg",
+      "order": 43,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_49.jpg",
+      "order": 49,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_59.jpg",
+      "order": 59,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_45.jpg",
+      "order": 45,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_1/order_15.jpg",
+      "order": 15,
+      "chap_id": 377
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_35.jpg",
+      "order": 35,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_77.jpg",
+      "order": 77,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_94.jpg",
+      "order": 94,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_92.jpg",
+      "order": 92,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_85.jpg",
+      "order": 85,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_76.jpg",
+      "order": 76,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_71.jpg",
+      "order": 71,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_106.jpg",
+      "order": 106,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_74.jpg",
+      "order": 74,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_77.jpg",
+      "order": 77,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_40.jpg",
+      "order": 40,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_70.jpg",
+      "order": 70,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_75.jpg",
+      "order": 75,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_56.jpg",
+      "order": 56,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_37.jpg",
+      "order": 37,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_64.jpg",
+      "order": 64,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_79.jpg",
+      "order": 79,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_67.jpg",
+      "order": 67,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_20.jpg",
+      "order": 20,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_58.jpg",
+      "order": 58,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_68.jpg",
+      "order": 68,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_40.jpg",
+      "order": 40,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_47.jpg",
+      "order": 47,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_100.jpg",
+      "order": 100,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_38.jpg",
+      "order": 38,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_73.jpg",
+      "order": 73,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_52.jpg",
+      "order": 52,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_57.jpg",
+      "order": 57,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_50.jpg",
+      "order": 50,
       "chap_id": 379
     }
   },
@@ -394,6 +802,126 @@
   {
     "model": "comic.Image",
     "fields": {
+      "image": "chap/comic_77_chapnum_3/order_24.jpg",
+      "order": 24,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_72.jpg",
+      "order": 72,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_44.jpg",
+      "order": 44,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_45.jpg",
+      "order": 45,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_58.jpg",
+      "order": 58,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_43.jpg",
+      "order": 43,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_51.jpg",
+      "order": 51,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_61.jpg",
+      "order": 61,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_52.jpg",
+      "order": 52,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_101.jpg",
+      "order": 101,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_91.jpg",
+      "order": 91,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_42.jpg",
+      "order": 42,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_74.jpg",
+      "order": 74,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_44.jpg",
+      "order": 44,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_69.jpg",
+      "order": 69,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
       "image": "chap/comic_77_chapnum_3/order_1.jpg",
       "order": 1,
       "chap_id": 379
@@ -402,9 +930,785 @@
   {
     "model": "comic.Image",
     "fields": {
-      "image": "chap/comic_77_chapnum_2/order_15.jpg",
-      "order": 15,
+      "image": "chap/comic_77_chapnum_2/order_86.jpg",
+      "order": 86,
       "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_23.jpg",
+      "order": 23,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_16.jpg",
+      "order": 16,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_107.jpg",
+      "order": 107,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_102.jpg",
+      "order": 102,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_0.jpg",
+      "order": 0,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_14.jpg",
+      "order": 14,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_12.jpg",
+      "order": 12,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_97.jpg",
+      "order": 97,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_15.jpg",
+      "order": 15,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_104.jpg",
+      "order": 104,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_90.jpg",
+      "order": 90,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_3.jpg",
+      "order": 3,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_46.jpg",
+      "order": 46,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_32.jpg",
+      "order": 32,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_18.jpg",
+      "order": 18,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_34.jpg",
+      "order": 34,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_98.jpg",
+      "order": 98,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_63.jpg",
+      "order": 63,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_99.jpg",
+      "order": 99,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_4.jpg",
+      "order": 4,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_27.jpg",
+      "order": 27,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_23.jpg",
+      "order": 23,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_29.jpg",
+      "order": 29,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_20.jpg",
+      "order": 20,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_48.jpg",
+      "order": 48,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_87.jpg",
+      "order": 87,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_67.jpg",
+      "order": 67,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_35.jpg",
+      "order": 35,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_82.jpg",
+      "order": 82,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_69.jpg",
+      "order": 69,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_11.jpg",
+      "order": 11,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_41.jpg",
+      "order": 41,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_66.jpg",
+      "order": 66,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_93.jpg",
+      "order": 93,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_103.jpg",
+      "order": 103,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_29.jpg",
+      "order": 29,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_30.jpg",
+      "order": 30,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_34.jpg",
+      "order": 34,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_75.jpg",
+      "order": 75,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_9.jpg",
+      "order": 9,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_19.jpg",
+      "order": 19,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_57.jpg",
+      "order": 57,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_17.jpg",
+      "order": 17,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_28.jpg",
+      "order": 28,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_41.jpg",
+      "order": 41,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_66.jpg",
+      "order": 66,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_27.jpg",
+      "order": 27,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_46.jpg",
+      "order": 46,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_59.jpg",
+      "order": 59,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_68.jpg",
+      "order": 68,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_38.jpg",
+      "order": 38,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_76.jpg",
+      "order": 76,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_31.jpg",
+      "order": 31,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_5.jpg",
+      "order": 5,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_7.jpg",
+      "order": 7,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_54.jpg",
+      "order": 54,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_50.jpg",
+      "order": 50,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_42.jpg",
+      "order": 42,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_64.jpg",
+      "order": 64,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_56.jpg",
+      "order": 56,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_2.jpg",
+      "order": 2,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_63.jpg",
+      "order": 63,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_26.jpg",
+      "order": 26,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_60.jpg",
+      "order": 60,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_10.jpg",
+      "order": 10,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_105.jpg",
+      "order": 105,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_48.jpg",
+      "order": 48,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_95.jpg",
+      "order": 95,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_62.jpg",
+      "order": 62,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_85.jpg",
+      "order": 85,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_6.jpg",
+      "order": 6,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_55.jpg",
+      "order": 55,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_51.jpg",
+      "order": 51,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_33.jpg",
+      "order": 33,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_96.jpg",
+      "order": 96,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_88.jpg",
+      "order": 88,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_37.jpg",
+      "order": 37,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_78.jpg",
+      "order": 78,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_81.jpg",
+      "order": 81,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_54.jpg",
+      "order": 54,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_18.jpg",
+      "order": 18,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_49.jpg",
+      "order": 49,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_53.jpg",
+      "order": 53,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_25.jpg",
+      "order": 25,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_8.jpg",
+      "order": 8,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_47.jpg",
+      "order": 47,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_83.jpg",
+      "order": 83,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_86.jpg",
+      "order": 86,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_39.jpg",
+      "order": 39,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_36.jpg",
+      "order": 36,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_22.jpg",
+      "order": 22,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_39.jpg",
+      "order": 39,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_25.jpg",
+      "order": 25,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_31.jpg",
+      "order": 31,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_2/order_30.jpg",
+      "order": 30,
+      "chap_id": 378
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_21.jpg",
+      "order": 21,
+      "chap_id": 379
+    }
+  },
+  {
+    "model": "comic.Image",
+    "fields": {
+      "image": "chap/comic_77_chapnum_3/order_13.jpg",
+      "order": 13,
+      "chap_id": 379
     }
   }
 ]
