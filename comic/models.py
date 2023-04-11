@@ -181,6 +181,7 @@ class Comment(models.Model):
     update_at = models.DateTimeField(auto_now=True)
     removed = models.BooleanField(default=False)
     edited = models.BooleanField(default=False)
+
     likes = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name='liked_posts')
     likes_num = models.IntegerField(default=0)

@@ -81,7 +81,7 @@ class GetComicNameSerializer(ModelSerializer):
 class UserSerializer(ModelSerializer):
     class Meta:
         model = MyUser
-        fields = ['username']
+        fields = ['username', 'avatar']
 
 class CommentSerializer(ModelSerializer):
     comic = GetComicNameSerializer()
