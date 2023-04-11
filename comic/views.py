@@ -1,10 +1,10 @@
 from django.core.paginator import Paginator, EmptyPage
 from .models import Comic, Genre, Chap, Image, Comment, Rating
-from .serializers import ComicSerializer, ChapSerializer, RatingSerializer, ComicSerializerBasicInfo, ComicSerializerDetail, ImageSerializer, GenreSerializer, CommenReplytSerializer, CommentPostSerializer, CommentPutSerializer
+from .serializers import ComicSerializer, ChapSerializer, CommentSerializer, ComicSerializerBasicInfo, ComicSerializerDetail, ImageSerializer, GenreSerializer, CommenReplytSerializer, CommentPutSerializer
 from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import FieldError
 from django.utils import timezone
-from django.db.models import Q
+from django.db.models import Q, Avg, Max, Sum, F
 from rest_framework.decorators import api_view
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -14,6 +14,8 @@ from user.models import MyUser, BookMark
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status, generics
+from rest_framework.pagination import PageNumberPagination
+from django.shortcuts import get_object_or_404
 
 
 def index(request):
@@ -181,40 +183,73 @@ def getGenres(request):
     serializer = serializer_class(genres, many=True)
     return Response(serializer.data)
 
+######## COMMENT ###########
 
 # GET API-CMT  /comics/comic_id
-class CommentAPI(generics.ListCreateAPIView):
-    queryset = Comment.objects.all().order_by('-created_at')
-    serializer_class = CommentPostSerializer
 
-    def get(self, request, id, id_chap):
-        comments = Comment.objects.filter(
-            comic=id, removed=False, parent=None).order_by('-created_at')
-        serializer_reply = CommenReplytSerializer(comments, many=True)
-        return Response(serializer_reply.data, status=200)
+#POST cmt in chap
 
-    def post(self, request, id, id_chap):
+class MyPagination(PageNumberPagination):
+    page_size = 15
+@api_view(['POST', 'GET'])
+def CommentAPI(request):
+    if request.method == 'POST':
+
         content = request.data.get('content')
         parent_id = request.data.get('parent_id')
+        comic_id = request.data.get('comic_id')
+        chap_id = request.data.get('chap_id')
         if request.user.is_authenticated:
             user = request.user
             if parent_id == None:
-                data = Comment.objects.create(
-                    user=user, comic_id=id, chap_id=id_chap, content=content,)
+                data = Comment.objects.create(user=user, comic_id=comic_id, chap_id=chap_id, content=content, )
             else:
                 parent = Comment.objects.get(id=parent_id)
-                data = Comment.objects.create(
-                    user=user, comic_id=id, chap_id=id_chap, content=content, parent=parent,)
+                data = Comment.objects.create(user=user, comic_id=id, chap_id=chap_id, content=content, parent=parent, )
             data.save()
-            serializer_comment = CommentPostSerializer(data)
+            serializer_comment = CommentSerializer(data)
             return Response(serializer_comment.data, status=status.HTTP_201_CREATED)
         return Response({'msg': 'user not authenticated'})
 
-# 1 fields content can update
+    if request.method == 'GET':
+        comments = Comment.objects.filter(removed=False, parent=None).order_by('-created_at')
+        paginator = MyPagination()
+        result_page = paginator.paginate_queryset(comments, request)
+        serializer = CommenReplytSerializer(result_page, many=True)
+        return paginator.get_paginated_response(serializer.data)
 
 
+@api_view(['GET'])
+def get_cmt_comic(request, comic_id):
+    if request.method == 'GET':
+        print('haha')
+        comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('-created_at')
+        paginator = MyPagination()
+        result_page = paginator.paginate_queryset(comments, request)
+        serializer = CommenReplytSerializer(result_page, many=True)
+        return paginator.get_paginated_response(serializer.data)
+
+
+#SORT cmt 1=newest, other=oldest
+@api_view(['GET'])
+def comment_sort(request, comic_id, record_type=None):
+    if record_type == 'newest':
+        comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('-created_at')
+
+    elif record_type == 'oldest':
+        comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('-created_at')
+    else:
+        # handle invalid record_type here
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    paginator = MyPagination()
+    result_page = paginator.paginate_queryset(comments, request)
+    serializer = CommenReplytSerializer(result_page, many=True)
+    return paginator.get_paginated_response(serializer.data)
+
+
+# DELETE and PUT, 1 fields content can update
 @api_view(['PUT', 'DELETE'])
-def PutComment(request, cmt_id):
+def put_comment(request, cmt_id):
     if request.method == 'PUT':
         try:
             cmt = Comment.objects.get(id=cmt_id)
@@ -241,9 +276,10 @@ def PutComment(request, cmt_id):
         return Response({'msg': 'user not authenticated'})
 
 
-@api_view(['GET'])
+
+@api_view(['POST'])
 def like_cmt(request, cmt_id):
-    if request.method == 'GET':
+    if request.method == 'POST':
         cmt = get_object_or_404(Comment, id=cmt_id)
         user = request.user
         if user.is_authenticated:
@@ -262,27 +298,28 @@ def like_cmt(request, cmt_id):
             return JsonResponse(data, status=401)
 
 
-class RateViewAPI(generics.ListCreateAPIView):
-    queryset = Rating.objects.filter(removed=False).order_by('-created_at')
-    serializer_class = RatingSerializer
+@api_view(['POST'])
+def rate_view_API(request, comic_id):
+    stars = request.data.get('stars')
+    if request.user.is_authenticated:
+        user = request.user
+        Rating.objects.update_or_create(user=user, comic_id=comic_id, defaults={'stars': stars})
+        comics = Comic.objects.get(id=comic_id)
+        rates = Rating.objects.filter(comic=comic_id, removed=False).aggregate(Avg('stars'))['stars__avg']
+        comics.rating = rates
+        comics.save()
+        return Response(rates, status=200)
+    return Response({'msg': 'user not authenticated'})
 
-    def post(self, request, comic_id):
-        stars = request.data.get('stars')
-        if request.user.is_authenticated:
-            user = request.user
-            try:
-                data = Rating.objects.create(
-                    user=user,
-                    comic_id=comic_id,
-                    stars=stars,
-                )
-            except:
-                return Response({'msg': '1 user only rate 1 times'})
-            data.save()
-            comics = Comic.objects.get(id=comic_id)
-            rates = Rating.objects.filter(comic=comic_id, removed=False).aggregate(
-                Avg('stars'))['stars__avg']
-            comics.rating = rates
-            comics.save()
-            return Response(rates, status=200)
-        return Response({'msg': 'user not authenticated'})
+
+# class caculate_recommendations():
+#     comics = Comic.objects.filter()
+#     total_ratings = Comic.objects.aggregate(total_ratings=Sum('rating'))['total_ratings'] or 1
+#     total_views = Comic.objects.aggregate(total_views=Sum('view'))['total_views'] or 1
+#     max_update_time = comics.aggregate(max_update_time=Max('updated_at'))['max_update_time'] or timezone.now()
+#
+#     for i in comics:
+#         time_since_update = (timezone.now() - i.updated_at).total_seconds() / (3600 * 24 * 365)
+#         weight = (0.5 * F('num_ratings') / total_ratings +
+#                   0.3 * F('num_views') / total_views +
+#                   0.2 * (1 / (1 + time_since_update)))

@@ -73,25 +73,15 @@ class ImageSerializer(serializers.ModelSerializer):
     updated_at = serializers.DateTimeField(
         format='%Y-%m-%d %H:%M:%S', read_only=True)
 
-
-class CommentPostSerializer(ModelSerializer):
-    class Meta:
-        model = Comment
-        fields = ('comic', 'content', 'chap', 'user', 'parent')
-        # depth = 1
-
-
-class UserSerializer(ModelSerializer):
-    class Meta:
-        model = MyUser
-        fields = ['username']
-
-
 class GetComicNameSerializer(ModelSerializer):
     class Meta:
         model = Comic
         fields = ['name']
 
+class UserSerializer(ModelSerializer):
+    class Meta:
+        model = MyUser
+        fields = ['username']
 
 class CommentSerializer(ModelSerializer):
     comic = GetComicNameSerializer()
@@ -99,9 +89,7 @@ class CommentSerializer(ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ['id', 'comic', 'user', 'content', 'created_at',
-                  'update_at', 'removed', 'edited', 'chap', 'likes_num']
-
+        fields = ['id', 'comic', 'user', 'content', 'created_at', 'update_at', 'removed', 'edited', 'chap', 'likes_num']
 
 class CommenReplytSerializer(ModelSerializer):
     comic = GetComicNameSerializer()
@@ -110,8 +98,7 @@ class CommenReplytSerializer(ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ['id', 'comic', 'user', 'content', 'created_at',
-                  'update_at', 'removed', 'edited', 'chap', 'replies', 'likes_num']
+        fields = ['id', 'comic', 'user', 'content', 'created_at', 'update_at', 'removed', 'edited', 'chap', 'replies', 'likes_num']
 
     def get_replies(self, obj, depth=0):
         if depth == 1:
@@ -121,14 +108,7 @@ class CommenReplytSerializer(ModelSerializer):
             serializer = CommentSerializer(instance=replies, many=True)
             return serializer.data
 
-
 class CommentPutSerializer(ModelSerializer):
     class Meta:
         model = Comment
         fields = ('id', 'content')
-
-
-class RatingSerializer(ModelSerializer):
-    class Meta:
-        model = Rating
-        fields = ('id', 'user', 'comic', 'stars')
