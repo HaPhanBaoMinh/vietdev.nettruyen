@@ -194,7 +194,6 @@ class MyPagination(PageNumberPagination):
 @api_view(['POST', 'GET'])
 def CommentAPI(request):
     if request.method == 'POST':
-
         content = request.data.get('content')
         parent_id = request.data.get('parent_id')
         comic_id = request.data.get('comic_id')
@@ -211,24 +210,28 @@ def CommentAPI(request):
             return Response(serializer_comment.data, status=status.HTTP_201_CREATED)
         return Response({'msg': 'user not authenticated'})
 
-    if request.method == 'GET':
-        comments = Comment.objects.filter(removed=False, parent=None).order_by('-created_at')
-        paginator = MyPagination()
-        result_page = paginator.paginate_queryset(comments, request)
-        serializer = CommenReplytSerializer(result_page, many=True)
-        return paginator.get_paginated_response(serializer.data)
 
 
 @api_view(['GET'])
-def get_cmt_comic(request, comic_id):
+def get_all_cmt(request, cmt_num):
+    if request.method == 'GET':
+        print('haha')
+        comments = Comment.objects.filter(removed=False, parent=None).order_by('-created_at')
+        paginator = Paginator(comments, 15)
+        result_page = paginator.page(cmt_num)
+        serializer = CommenReplytSerializer(result_page, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_cmt_comic(request, comic_id, cmt_num):
     if request.method == 'GET':
         print('haha')
         comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('-created_at')
-        paginator = MyPagination()
-        result_page = paginator.paginate_queryset(comments, request)
+        paginator = Paginator(comments, 15)
+        result_page = paginator.page(cmt_num)
         serializer = CommenReplytSerializer(result_page, many=True)
-        return paginator.get_paginated_response(serializer.data)
-
+        return Response(serializer.data)
 
 #SORT cmt 1=newest, other=oldest
 @api_view(['GET'])
