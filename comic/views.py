@@ -191,7 +191,7 @@ def getGenres(request):
 
 class MyPagination(PageNumberPagination):
     page_size = 15
-@api_view(['POST', 'GET'])
+@api_view(['POST'])
 def CommentAPI(request):
     if request.method == 'POST':
         content = request.data.get('content')
