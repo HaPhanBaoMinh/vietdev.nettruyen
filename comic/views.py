@@ -312,14 +312,15 @@ def rate_view_API(request, comic_id):
     return Response({'msg': 'user not authenticated'})
 
 
-# class caculate_recommendations():
-#     comics = Comic.objects.filter()
-#     total_ratings = Comic.objects.aggregate(total_ratings=Sum('rating'))['total_ratings'] or 1
-#     total_views = Comic.objects.aggregate(total_views=Sum('view'))['total_views'] or 1
-#     max_update_time = comics.aggregate(max_update_time=Max('updated_at'))['max_update_time'] or timezone.now()
-#
-#     for i in comics:
-#         time_since_update = (timezone.now() - i.updated_at).total_seconds() / (3600 * 24 * 365)
-#         weight = (0.5 * F('num_ratings') / total_ratings +
-#                   0.3 * F('num_views') / total_views +
-#                   0.2 * (1 / (1 + time_since_update)))
+def caculate_recommendations(request):
+    comics = Comic.objects.all()
+    total_ratings = Comic.objects.aggregate(total_ratings=Sum('rating'))['total_ratings'] or 1
+    total_views = Comic.objects.aggregate(total_views=Sum('view'))['total_views'] or 1
+    max_update_time = comics.aggregate(max_update_time=Max('updated_at'))['max_update_time'] or timezone.now()
+
+    for i in comics:
+        time_since_update = (timezone.now() - i.updated_at).total_seconds() / (3600 * 24 * 365)
+        weight = (0.5 * F('rating') / total_ratings +
+                  0.3 * F('view') / total_views +
+                  0.2 * (1 / (1 + time_since_update)))
+        print(weight)

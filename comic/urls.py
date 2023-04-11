@@ -15,4 +15,5 @@ urlpatterns = [
     path('/cmt_like/<int:cmt_id>/', views.like_cmt),
     path('/rate/<int:comic_id>/', views.rate_view_API),
     path('/put_cmt/<int:cmt_id>/', views.put_comment),
+    path('/recommend/', views.caculate_recommendations),
 ]
