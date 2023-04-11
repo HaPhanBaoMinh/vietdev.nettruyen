@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status, generics, permissions
 from user.models import MyUser, Follow, BookMark
 from django.contrib.auth.models import User
-from .serializers import UserSerializer, FollowSerializer, FollowSerializerFull, BookMarkSerializer, BookMarkDetailSerializer
+from .serializers import UserSerializer, FollowSerializer, FollowSerializerFull, BookMarkSerializer, BookMarkDetailSerializer, UserchangeAvatarSerializer
 from .utils import get_tokens_for_user
 from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
@@ -275,3 +275,16 @@ def ratingComic(request):
 
 def index(request):
     return HttpResponse("user")
+
+@api_view(['PUT'])
+def ImageViewSet(request):
+    user = request.user
+    serializer = UserchangeAvatarSerializer(user, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        serializer_user = UserSerializer(user)
+        return Response(serializer_user.data, status=200)
+    return Response(serializer.errors, status=400)
+
+
+

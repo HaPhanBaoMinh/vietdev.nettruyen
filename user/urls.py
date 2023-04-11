@@ -15,5 +15,5 @@ urlpatterns = [
     path('logout', views.logout),
     path('bookmark', views.bookmark),
     path('/', views.index),
-
+    path('upload/', views.ImageViewSet, name='upload'),
 ]

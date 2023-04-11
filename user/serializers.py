@@ -11,6 +11,10 @@ class UserSerializer(ModelSerializer):
         model = MyUser
         fields = ('id', 'username', 'email', 'avatar', 'fullname')
 
+class UserchangeAvatarSerializer(ModelSerializer):
+    class Meta:
+        model = MyUser
+        fields = ['avatar']
 
 class FollowSerializer(ModelSerializer):
     comic = ComicSerializerBasicInfo()
