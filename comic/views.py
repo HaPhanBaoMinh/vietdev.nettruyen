@@ -215,9 +215,10 @@ def CommentAPI(request):
 @api_view(['GET'])
 def get_all_cmt(request, cmt_num):
     if request.method == 'GET':
-        print('haha')
-        comments = Comment.objects.filter(removed=False, parent=None).order_by('-created_at')
-        paginator = Paginator(comments, 15)
+        comments = Comment.objects.filter(removed=False, parent=None, comic=None).order_by('-created_at')
+        try:
+            paginator = Paginator(comments, 15)
+        except: return Response({'msg': 'not found'})
         result_page = paginator.page(cmt_num)
         serializer = CommenReplytSerializer(result_page, many=True)
         return Response(serializer.data)
@@ -226,28 +227,54 @@ def get_all_cmt(request, cmt_num):
 @api_view(['GET'])
 def get_cmt_comic(request, comic_id, cmt_num):
     if request.method == 'GET':
-        print('haha')
         comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('-created_at')
-        paginator = Paginator(comments, 15)
+        try:
+            paginator = Paginator(comments, 15)
+        except:
+            return Response({'msg': 'not found'})
         result_page = paginator.page(cmt_num)
         serializer = CommenReplytSerializer(result_page, many=True)
         return Response(serializer.data)
 
-#SORT cmt 1=newest, other=oldest
+
 @api_view(['GET'])
-def comment_sort(request, comic_id, record_type=None):
+def comment_sort(request, cmt_num, record_type=None):
+    if record_type == 'newest':
+        comments = Comment.objects.filter(removed=False, parent=None).order_by('-created_at')
+
+    elif record_type == 'oldest':
+        comments = Comment.objects.filter(removed=False, parent=None).order_by('created_at')
+    else:
+        # handle invalid record_type here
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    try:
+        paginator = Paginator(comments, 15)
+    except:
+        return Response({'msg': 'not found'})
+    result_page = paginator.page(cmt_num)
+    serializer = CommenReplytSerializer(result_page, many=True)
+    return Response(serializer.data)
+
+
+
+@api_view(['GET'])
+def comment_comic_sort(request, comic_id, cmt_num, record_type=None):
     if record_type == 'newest':
         comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('-created_at')
 
     elif record_type == 'oldest':
-        comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('-created_at')
+        comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('created_at')
     else:
         # handle invalid record_type here
         return Response(status=status.HTTP_400_BAD_REQUEST)
-    paginator = MyPagination()
-    result_page = paginator.paginate_queryset(comments, request)
+    try:
+        paginator = Paginator(comments, 15)
+    except:
+        return Response({'msg': 'not found'})
+    result_page = paginator.page(cmt_num)
     serializer = CommenReplytSerializer(result_page, many=True)
-    return paginator.get_paginated_response(serializer.data)
+    return Response(serializer.data)
+
 
 
 # DELETE and PUT, 1 fields content can update
