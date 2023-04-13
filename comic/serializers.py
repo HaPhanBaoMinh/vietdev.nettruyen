@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from comic.models import Comic, Genre, Chap, Image, Comment, Rating
+from comic.models import Comic, Genre, Chap, Image, Comment, Novels
 from user.models import MyUser
 from rest_framework import serializers
 
@@ -73,6 +73,8 @@ class ImageSerializer(serializers.ModelSerializer):
     updated_at = serializers.DateTimeField(
         format='%Y-%m-%d %H:%M:%S', read_only=True)
 
+
+
 class GetComicNameSerializer(ModelSerializer):
     class Meta:
         model = Comic
@@ -112,3 +114,16 @@ class CommentPutSerializer(ModelSerializer):
     class Meta:
         model = Comment
         fields = ('id', 'content')
+
+
+
+class GetChapName(ModelSerializer):
+    class Meta:
+        model = Chap
+        fields = ['id', 'name']
+
+class NovelsSerializer(ModelSerializer):
+    chap = GetChapName()
+    class Meta:
+        model = Novels
+        fields = ('id', 'chap', 'content', 'is_novel')

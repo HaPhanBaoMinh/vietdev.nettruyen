@@ -13,9 +13,9 @@ urlpatterns = [
     path('/get_cmt/<int:cmt_num>/', views.get_all_cmt),
     path('/get_cmt/<int:comic_id>/<int:cmt_num>/', views.get_cmt_comic),
     path('/cmt/<int:cmt_num>/<str:record_type>/', views.comment_sort),
-    path('/cmt/<int:cmt_num>/<int:comic_id>/<str:record_type>/', views.comment_comic_sort),
     path('/cmt_like/<int:cmt_id>/', views.like_cmt),
     path('/rate/<int:comic_id>/', views.rate_view_API),
     path('/put_cmt/<int:cmt_id>/', views.put_comment),
     # path('/recommend/', views.caculate_recommendations),
+    path('/author/', views.get_comic_by_author)
 ]

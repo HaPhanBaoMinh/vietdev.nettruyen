@@ -287,4 +287,24 @@ def ImageViewSet(request):
     return Response(serializer.errors, status=400)
 
 
+##follow with anonymous user
+def follow_comic_sync(request):
+    user = request.user
+    follow_list = request.COOKIES.get('comic_follow_list', '').split(',')
+    follows = list(Follow.objects.filter(user=user))
+    for comic_id in follow_list:
+        try:
+            comic = Follow.objects.get(user=user, id=comic_id)
+        except Follow.DoesNotExist:
+            comic = None
+        if comic is not None and comic not in follows:
+            follows.append(comic)
+    return follows
+
+
+
+
+
+
+
 

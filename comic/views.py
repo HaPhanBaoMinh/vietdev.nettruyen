@@ -1,13 +1,10 @@
 from django.core.paginator import Paginator, EmptyPage
-from .models import Comic, Genre, Chap, Image, Comment, Rating
-from .serializers import ComicSerializer, ChapSerializer, CommentSerializer, ComicSerializerBasicInfo, ComicSerializerDetail, ImageSerializer, GenreSerializer, CommenReplytSerializer, CommentPutSerializer
+from .models import Comic, Genre, Chap, Image, Comment, Rating, Novels
+from .serializers import ComicSerializer, ChapSerializer, NovelsSerializer, CommentSerializer, ComicSerializerBasicInfo, ComicSerializerDetail, ImageSerializer, GenreSerializer, CommenReplytSerializer, CommentPutSerializer
 from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import FieldError
 from django.utils import timezone
 from django.db.models import Q, Avg, Max, Sum, F
-from rest_framework.decorators import api_view
-from rest_framework.decorators import api_view
-from rest_framework import status
 from rest_framework.response import Response
 from user.serializers import BookMarkSerializer
 from user.models import MyUser, BookMark
@@ -16,6 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status, generics
 from rest_framework.pagination import PageNumberPagination
 from django.shortcuts import get_object_or_404
+from .utils import get_wakatime_stats
 
 
 def index(request):
@@ -145,13 +143,29 @@ def getComicByGenreSlug(request, genre_slug):
 
 # GET - api/comics/chap/image/<chap_num>
 # Increate the number of view, view_day, view_week, view_month
+
+# @api_view(['GET'])
+# def getChapImage(request, chap_id):
+#     # serializer_class = ImageSerializer
+#     novels = Novels.objects.get(chap=chap_id)
+#     print(novels)
+#     serializer_novel = NovelsSerializer(novels)
+#     print(serializer_novel)
+#     return Response(serializer_novel.data)
+
 @api_view(['GET'])
 def getChapImage(request, chap_id):
-    serializer_class = ImageSerializer
+    # serializer_class = ImageSerializer
+    chap = Chap.objects.get(id=chap_id)
     images = Image.objects.filter(chap_id=chap_id).order_by("order")
-    serializer = serializer_class(images, many=True)
+    novels = Novels.objects.get(chap_id=chap_id)
+    if chap.is_novel == True:
+        novels.is_novel = True
+        novels.save()
+        serializer = NovelsSerializer(novels)
+    else: serializer = ImageSerializer(images, many=True)
 
-    response = Response(serializer.data)
+    response = Response(serializer.data, status=200)
 
     increateView = request.COOKIES.get(str(chap_id))
 
@@ -172,6 +186,44 @@ def getChapImage(request, chap_id):
         return response
     except Chap.DoesNotExist:
         return Response({'error': 'Chap not found'}, status=status.HTTP_404_NOT_FOUND)
+
+
+
+# GET - api/comics/chap/image/<chap_num>
+# Increate the number of view, view_day, view_week, view_month
+# @api_view(['GET'])
+# def getChapImage(request, chap_id):
+#     serializer_class = ImageSerializer
+#     images = Image.objects.filter(chap_id=chap_id).order_by("order")
+#     serializer = serializer_class(images, many=True)
+#
+#     response = Response(serializer.data)
+#
+#     increateView = request.COOKIES.get(str(chap_id))
+#
+#     try:
+#         chap = Chap.objects.get(pk=chap_id)
+#         wakatime_api_key = 'waka_9110b9eb-262a-414b-a4a2-f9177769257b'
+#         wakatime_hours = float(get_wakatime_stats(wakatime_api_key))
+#         wakatime_days = wakatime_hours / 24
+#         reading_speed = 100  # tốc độ đọc trung bình 100 từ mỗi phút
+#         pages_per_day = wakatime_days * reading_speed / 60 / 60
+#
+#         if not increateView and pages_per_day >= 5:
+#             comic = chap.comic
+#             comic.view += 1
+#             comic.view_day += 1
+#             comic.view_week += 1
+#             comic.view_month += 1
+#             comic.save()
+#             response.set_cookie(str(chap_id), str(chap_id), max_age=60 * 5)
+#
+#         print(increateView)
+#         print(pages_per_day)
+#
+#         return response
+#     except Chap.DoesNotExist:
+#         return Response({'error': 'Chap not found'}, status=status.HTTP_404_NOT_FOUND)
 
 # GET - api/comics/genres
 
@@ -204,7 +256,7 @@ def CommentAPI(request):
                 data = Comment.objects.create(user=user, comic_id=comic_id, chap_id=chap_id, content=content, )
             else:
                 parent = Comment.objects.get(id=parent_id)
-                data = Comment.objects.create(user=user, comic_id=id, chap_id=chap_id, content=content, parent=parent, )
+                data = Comment.objects.create(user=user, comic_id=comic_id, chap_id=chap_id, content=content, parent=parent, )
             data.save()
             serializer_comment = CommentSerializer(data)
             return Response(serializer_comment.data, status=status.HTTP_201_CREATED)
@@ -221,6 +273,7 @@ def get_all_cmt(request, cmt_num):
         except: return Response({'msg': 'not found'})
         result_page = paginator.page(cmt_num)
         serializer = CommenReplytSerializer(result_page, many=True)
+        print(serializer)
         return Response(serializer.data)
 
 
@@ -239,14 +292,21 @@ def get_cmt_comic(request, comic_id, cmt_num):
 
 @api_view(['GET'])
 def comment_sort(request, cmt_num, record_type=None):
+    comic_id = request.data.get('comic_id')
     if record_type == 'newest':
-        comments = Comment.objects.filter(removed=False, parent=None).order_by('-created_at')
-
+        if comic_id == None:
+            comments = Comment.objects.filter(removed=False, parent=None).order_by('-created_at')
+        else:
+            comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('-created_at')
     elif record_type == 'oldest':
-        comments = Comment.objects.filter(removed=False, parent=None).order_by('created_at')
+        if comic_id == None:
+            comments = Comment.objects.filter(removed=False, parent=None).order_by('created_at')
+        else:
+            comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('created_at')
     else:
         # handle invalid record_type here
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
     try:
         paginator = Paginator(comments, 15)
     except:
@@ -254,27 +314,6 @@ def comment_sort(request, cmt_num, record_type=None):
     result_page = paginator.page(cmt_num)
     serializer = CommenReplytSerializer(result_page, many=True)
     return Response(serializer.data)
-
-
-
-@api_view(['GET'])
-def comment_comic_sort(request, comic_id, cmt_num, record_type=None):
-    if record_type == 'newest':
-        comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('-created_at')
-
-    elif record_type == 'oldest':
-        comments = Comment.objects.filter(comic=comic_id, removed=False, parent=None).order_by('created_at')
-    else:
-        # handle invalid record_type here
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-    try:
-        paginator = Paginator(comments, 15)
-    except:
-        return Response({'msg': 'not found'})
-    result_page = paginator.page(cmt_num)
-    serializer = CommenReplytSerializer(result_page, many=True)
-    return Response(serializer.data)
-
 
 
 # DELETE and PUT, 1 fields content can update
@@ -344,13 +383,30 @@ def rate_view_API(request, comic_id):
 
 # def caculate_recommendations(request):
 #     comics = Comic.objects.all()
+#     print('haha')
 #     total_ratings = Comic.objects.aggregate(total_ratings=Sum('rating'))['total_ratings'] or 1
 #     total_views = Comic.objects.aggregate(total_views=Sum('view'))['total_views'] or 1
 #     max_update_time = comics.aggregate(max_update_time=Max('updated_at'))['max_update_time'] or timezone.now()
 #
+#     recommendations = []
 #     for i in comics:
 #         time_since_update = (timezone.now() - i.updated_at).total_seconds() / (3600 * 24 * 365)
 #         weight = (0.5 * F('rating') / total_ratings +
 #                   0.3 * F('view') / total_views +
 #                   0.2 * (1 / (1 + time_since_update)))
 #         print(weight)
+#         recommendations.append(weight)
+#     print(recommendations)
+#     return recommendations
+
+@api_view(['GET'])
+def get_comic_by_author(request):
+    author = request.data.get('author')
+    comics = Comic.objects.filter(author=author)
+    seỉalizer = ComicSerializerBasicInfo(comics, many=True)
+    return Response(seỉalizer.data)
+
+
+
+
+

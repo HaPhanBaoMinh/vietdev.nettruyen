@@ -66,6 +66,7 @@ class Chap(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     comic = models.ForeignKey(
         Comic, on_delete=models.CASCADE, related_name="chapter")
+    is_novel = models.BooleanField(null=True, default=0)
 
     def __str__(self):
         return f"{self.id} - {self.name} - {self.comic}"
@@ -132,6 +133,9 @@ def get_image_upload_path(instance, filename):
     chap_num = instance.chap.chap_num
     folder_name = "comic_{0}_chapnum_{1}".format(comic_id, chap_num)
     return os.path.join("chap", folder_name, filename)
+
+
+
 
 
 class Image(models.Model):
@@ -212,3 +216,12 @@ class Rating (models.Model):
 
     def __str__(self):
         return f'{self.user} - {self.comic}'
+
+
+class Novels(models.Model):
+    chap = models.ForeignKey(Chap, on_delete=models.CASCADE)
+    content = models.TextField()
+    is_novel = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.chap} {self.content}"
