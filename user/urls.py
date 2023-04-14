@@ -16,4 +16,6 @@ urlpatterns = [
     path('bookmark', views.bookmark),
     path('/', views.index),
     path('upload/', views.ImageViewSet, name='upload'),
+    path('follow_anonymous', views.follow_without_login),
+    path('follow_sync', views.follow_comic_sync),
 ]

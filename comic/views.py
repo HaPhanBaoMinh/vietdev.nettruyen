@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage
 from .models import Comic, Genre, Chap, Image, Comment, Rating, Novels
 from .serializers import ComicSerializer, ChapSerializer, NovelsSerializer, CommentSerializer, ComicSerializerBasicInfo, ComicSerializerDetail, ImageSerializer, GenreSerializer, CommenReplytSerializer, CommentPutSerializer
@@ -179,40 +180,7 @@ def getChapImage(request, chap_id):
 
 # GET - api/comics/chap/image/<chap_num>
 # Increate the number of view, view_day, view_week, view_month
-# @api_view(['GET'])
-# def getChapImage(request, chap_id):
-#     serializer_class = ImageSerializer
-#     images = Image.objects.filter(chap_id=chap_id).order_by("order")
-#     serializer = serializer_class(images, many=True)
-#
-#     response = Response(serializer.data)
-#
-#     increateView = request.COOKIES.get(str(chap_id))
-#
-#     try:
-#         chap = Chap.objects.get(pk=chap_id)
-#         wakatime_api_key = 'waka_9110b9eb-262a-414b-a4a2-f9177769257b'
-#         wakatime_hours = float(get_wakatime_stats(wakatime_api_key))
-#         wakatime_days = wakatime_hours / 24
-#         reading_speed = 100  # tốc độ đọc trung bình 100 từ mỗi phút
-#         pages_per_day = wakatime_days * reading_speed / 60 / 60
-#
-#         if not increateView and pages_per_day >= 5:
-#             comic = chap.comic
-#             comic.view += 1
-#             comic.view_day += 1
-#             comic.view_week += 1
-#             comic.view_month += 1
-#             comic.save()
-#             response.set_cookie(str(chap_id), str(chap_id), max_age=60 * 5)
-#
-#         print(increateView)
-#         print(pages_per_day)
-#
-#         return response
-#     except Chap.DoesNotExist:
-#         return Response({'error': 'Chap not found'}, status=status.HTTP_404_NOT_FOUND)
-#
+
 # # GET - api/comics/genres
 
 

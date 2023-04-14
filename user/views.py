@@ -287,18 +287,50 @@ def ImageViewSet(request):
     return Response(serializer.errors, status=400)
 
 
+from comic.serializers import ComicSerializerBasicInfo
 ##follow with anonymous user
+@api_view(['POST', 'GET'])
+def follow_without_login(request):
+    if request.method == 'POST':
+        if not request.data.get("comic_id"):
+            return JsonResponse({'message': "Please enter comic_id"}, status=status.HTTP_400_BAD_REQUEST)
+        comic_id = request.data.get("comic_id")
+        followed_comics = request.session.get('followed_comics', [])
+        if comic_id not in followed_comics:
+            followed_comics.append(comic_id)
+
+        request.session['followed_comics'] = followed_comics
+        return JsonResponse({'followed': True})
+    if request.method == 'GET':
+        followed_comics = request.session.get('followed_comics')
+        comics = []
+        for i in followed_comics:
+            try:
+                comic_i = Comic.objects.get(id=i)
+                comics.append(comic_i)
+            except: continue
+        serializer = ComicSerializerBasicInfo(comics, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['POST'])
 def follow_comic_sync(request):
     user = request.user
-    follow_list = request.COOKIES.get('comic_follow_list', '').split(',')
-    follows = list(Follow.objects.filter(user=user))
-    for comic_id in follow_list:
+    followed_comics = request.session.get('followed_comics')
+    for i in followed_comics:
+        comic = get_object_or_404(Comic, pk=i)
         try:
-            comic = Follow.objects.get(user=user, id=comic_id)
-        except Follow.DoesNotExist:
-            comic = None
-        if comic is not None and comic not in follows:
-            follows.append(comic)
-    return follows
+            follow = Follow.objects.get(user=user, comic=comic)
+        except:
+            follow = Follow.objects.filter(user=user, comic=i).first()
+            comic.follower += 1
+            comic.save()
 
-
+            follow_data = {
+                'user': user.id,
+                'comic': i
+            }
+            follow_serializer = FollowSerializerFull(data=follow_data)
+            if follow_serializer.is_valid():
+                follow_serializer.save()
+    return Response({'msg': 'list follow updated'})
