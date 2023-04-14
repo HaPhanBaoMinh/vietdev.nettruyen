@@ -13,7 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status, generics
 from rest_framework.pagination import PageNumberPagination
 from django.shortcuts import get_object_or_404
-from .utils import get_wakatime_stats
+# from .utils import get_wakatime_stats
 
 
 def index(request):
@@ -212,8 +212,8 @@ def getChapImage(request, chap_id):
 #         return response
 #     except Chap.DoesNotExist:
 #         return Response({'error': 'Chap not found'}, status=status.HTTP_404_NOT_FOUND)
-
-# GET - api/comics/genres
+#
+# # GET - api/comics/genres
 
 
 @api_view(['GET'])
