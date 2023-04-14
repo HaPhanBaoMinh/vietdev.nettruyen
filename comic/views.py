@@ -108,15 +108,23 @@ def getComicBySortFiled(request, page_num, sort_field):
 # GET - api/comics/<comic_id>
 
 
+from user.models import Follow
 @api_view(['GET'])
 def getComicDetail(request, comic_id):
     comic = Comic.objects.get(pk=comic_id)
+    user = request.user
+
     if not comic:
         return JsonResponse({'error': 'Not exist comic'}, status=400)
-
+    try:
+        Follow.objects.get(user=user, comic=comic)
+        is_follow = "followed"
+    except:
+        is_follow = "un_followed"
     serialized_comic = ComicSerializerDetail(instance=comic)
-
-    return Response(serialized_comic.data, status=status.HTTP_200_OK)
+    response_data = serialized_comic.data.copy()
+    response_data['msg'] = is_follow
+    return Response(response_data, status=status.HTTP_200_OK)
 
 
 # GET - api/comics/<search>
@@ -124,7 +132,6 @@ def getComicDetail(request, comic_id):
 def getComicSearch(request):
     serializer_class = ComicSerializerBasicInfo
     query = request.GET.get('value', '')
-    print(query)
     if not query:
         return JsonResponse({"message": "No value provided"}, status=status.HTTP_400_BAD_REQUEST)
     comics = Comic.objects.filter(Q(name__icontains=query) | Q(
@@ -331,7 +338,9 @@ def rate_view_API(request, comic_id):
         Rating.objects.update_or_create(user=user, comic_id=comic_id, defaults={'stars': stars})
         comics = Comic.objects.get(id=comic_id)
         rates = Rating.objects.filter(comic=comic_id, removed=False).aggregate(Avg('stars'))['stars__avg']
+        rates_count = Rating.objects.filter(comic=comic_id, removed=False).count()
         comics.rating = rates
+        comics.rating_count = rates_count
         comics.save()
         return Response(rates, status=200)
     return Response({'msg': 'user not authenticated'})

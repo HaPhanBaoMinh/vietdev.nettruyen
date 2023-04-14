@@ -152,7 +152,7 @@ output
 ]
 ```
 
-## api theo dõi khi là user `http://127.0.0.1:8000/api/users/follow`
+## api theo dõi khi là user / xóa follow (unfollow) `http://127.0.0.1:8000/api/users/follow`
 * GET
 
 output:
@@ -198,6 +198,22 @@ input:
 }
 ```
 output:
+```json
+{
+    "message": "Success!"
+}
+```
+
+* DELETE
+
+input:
+```json
+{
+    "comic_id": "50"
+}
+```
+
+output: 
 ```json
 {
     "message": "Success!"

@@ -8,7 +8,7 @@ urlpatterns = [
     path('/chap/image/<int:chap_id>', views.getChapImage),
     path('/<str:genre_slug>', views.getComicByGenreSlug),
     path('/detail/<int:comic_id>', views.getComicDetail),
-    path('/<str:sort_field>/<int:page_num>', views.getComicBySortFiled),path('/cmt/<int:comic_id>/<str:record_type>', views.comment_sort),
+    path('/<str:sort_field>/<int:page_num>', views.getComicBySortFiled),
     path('/cmt/', views.CommentAPI),
     path('/get_cmt/<int:cmt_num>/', views.get_all_cmt),
     path('/get_cmt/<int:comic_id>/<int:cmt_num>/', views.get_cmt_comic),

@@ -36,7 +36,7 @@ admin.site.register(Genre, GenreAdmin)
 
 @admin.register(Comment)
 class Comment(admin.ModelAdmin):
-    list_display = ('comic', 'user', 'content')
+    list_display = ('id', 'comic', 'user', 'content')
 
 
 @admin.register(Rating)

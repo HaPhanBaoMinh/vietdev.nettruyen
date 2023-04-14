@@ -241,3 +241,9 @@ MEDIA_URL = '/nettruyen/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'nettruyen/media/')
 
 WAKATIME_API_KEY = 'waka_98b8b267-3bfb-4ecb-b51e-6330760d754c'
+
+
+ALGOLIA = {
+    'APPLICATION_ID': '559T4SZYM5',
+    'API_KEY': '843ffa948624efe0a94f3981ed50a20d'
+}

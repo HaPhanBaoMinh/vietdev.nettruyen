@@ -46,6 +46,7 @@ class Comic(models.Model):
         max_length=10, choices=GENDER_CHOICES, null=True, default='unisex')
     image = models.ImageField(upload_to='comic/', null=True)
     rating = models.FloatField(default=0, null=False)
+    rating_count = models.FloatField(default=0, null=True)
     follower = models.IntegerField(default=0, null=False)
     comment = models.IntegerField(default=0, null=False)
     chap = models.IntegerField(default=0, null=False)
