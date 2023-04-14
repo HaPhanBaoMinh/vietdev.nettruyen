@@ -141,25 +141,13 @@ def getComicByGenreSlug(request, genre_slug):
     return Response(serializer.data)
 
 
-# GET - api/comics/chap/image/<chap_num>
-# Increate the number of view, view_day, view_week, view_month
-
-# @api_view(['GET'])
-# def getChapImage(request, chap_id):
-#     # serializer_class = ImageSerializer
-#     novels = Novels.objects.get(chap=chap_id)
-#     print(novels)
-#     serializer_novel = NovelsSerializer(novels)
-#     print(serializer_novel)
-#     return Response(serializer_novel.data)
-
 @api_view(['GET'])
 def getChapImage(request, chap_id):
     # serializer_class = ImageSerializer
     chap = Chap.objects.get(id=chap_id)
     images = Image.objects.filter(chap_id=chap_id).order_by("order")
-    novels = Novels.objects.get(chap_id=chap_id)
     if chap.is_novel == True:
+        novels = Novels.objects.get(chap_id=chap_id)
         novels.is_novel = True
         novels.save()
         serializer = NovelsSerializer(novels)

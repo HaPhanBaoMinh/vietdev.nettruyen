@@ -302,9 +302,3 @@ def follow_comic_sync(request):
     return follows
 
 
-
-
-
-
-
-
